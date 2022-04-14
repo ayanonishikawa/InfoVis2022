@@ -36,7 +36,7 @@ min()
     return m < this.z ? m : this.z;
 }
 
-max ()
+max()
 {
     //return Math.max( this.x, this.y, this.z );
     const m = this.x > this.y ? this.x : this.y;
