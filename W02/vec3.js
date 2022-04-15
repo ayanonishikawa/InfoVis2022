@@ -1,5 +1,4 @@
-class Vec3 
-{
+class Vec3 {
     // Constructor
     constructor(x, y, z) {
         this.x = x;
@@ -14,8 +13,7 @@ class Vec3
         return this;
     }
 
-    sub( v )
-    {
+    sub(v) {
         this.x -= v.x;
         this.y -= v.y;
         this.z -= v.z;
@@ -35,6 +33,7 @@ class Vec3
     max() {
         //return Math.max( this.x, this.y, this.z );
         const m = this.x > this.y ? this.x : this.y;
+        document.write("m=" + m) + "<br>";
         return m > this.z ? m : this.z;
     }
 
@@ -43,7 +42,9 @@ class Vec3
     }
 
     cross(v) {
-        var x = this.x, y = this.y, z = this.z;
+        var x = this.x,
+            y = this.y,
+            z = this.z;
         this.x = y * v.z - z * v.y;
         this.y = z * v.x - x * v.z;
         this.z = x * v.y - y * v.x;
