@@ -65,10 +65,8 @@
             for (i = 0; i < 3; i++) {
                 if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
                     if (eventID.indexOf('x') > -1) {
-                        console.log("x<br>");
                         vertex_all[i][0] = event.data; //(double)(event.data); //イベントで入力された文字列
                     } else if (eventID.indexOf('y') > -1) {
-                        console.log("y<br>");
                         vertex_all[i][1] = event.data; //(double)(event.data); //イベントで入力された文字列
                     } else {
                         vertex_all[i][2] = event.data; //(double)(event.data); //イベントで入力された文字列
@@ -79,6 +77,7 @@
             console.log(event.data);
         }
 
+        //配列に格納されたか確認
         function event_button() {
             for (i = 0; i < 3; i++) {
                 for (j = 0; j < 3; j++) {
