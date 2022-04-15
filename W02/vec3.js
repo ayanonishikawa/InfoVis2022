@@ -6,7 +6,6 @@ class Vec3
         this.y = y;
         this.z = z;
     }
-}
 
 add( v )
 {
@@ -59,4 +58,6 @@ cross( v )
 length()
 {
     return Math.sqrt( this.x * this.x + this.y * this.y + this.z * this.z );
+}
+
 }
