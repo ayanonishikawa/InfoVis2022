@@ -5,20 +5,47 @@
 </head>
 
 <body>
-    <input type="button" onclick="e()" value="Click Me" />
+    <p>
+        <label>x0: <input type="number" id="number_x0" /></label>
+        <label>x1: <input type="number" id="number_x1" /></label>
+        <label>x2: <input type="number" id="number_x2" /></label>
+    </p>
+
+    <p>
+        <label>y0: <input type="number" id="number_y0" /></label>
+        <label>y1: <input type="number" id="number_y1" /></label>
+        <label>y2: <input type="number" id="number_y2" /></label>
+    </p>
+
+    <p>
+        <label>z0: <input type="number" id="number_z0" /></label>
+        <label>z1: <input type="number" id="number_z1" /></label>
+        <label>z2: <input type="number" id="number_z2" /></label>
+    </p>
+
     <!--
 	<input type="button" value="Click Me" id="click_me"/>
 	-->
+    <script src="vec3.js"></script>
     <script>
-        // function e() {
-        //     window.alert('Clicked!');
-        // }
-        var element = document.getElementById('click_me');
-        element.addEventListener('click', event);
+        var x0, y0, z0; // (input vertex 0)
+        var x1, y1, z1; // (input vertex 1)
+        var x2, y2, z2; // (input vertex 2)
+        var element_x0 = document.getElementById('number_x0');
+        var element_x1 = document.getElementById('number_x1');
+        var element_x2 = document.getElementById('number_x2');
+        element_x0.addEventListener('input', event);
+        element_x1.addEventListener('input', event);
+        element_x2.addEventListener('input', event);
 
         function event() {
-            window.alert('Clicked!');
+            console.log(event.data + "<br>");
         }
+
+        // var v0 = new Vec3(x0, y0, z0);
+        // var v1 = new Vec3(x1, y1, z1);
+        // var v2 = new Vec3(x2, y2, z2);
+        // var S = AreaOfTriangle(v0, v1, v2); // (output value)
     </script>
 </body>
 
