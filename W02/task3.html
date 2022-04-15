@@ -6,21 +6,21 @@
 
 <body>
     <p>
-        <label>x0: <input type="number" id="number_x0" /></label>
-        <label>x1: <input type="number" id="number_x1" /></label>
-        <label>x2: <input type="number" id="number_x2" /></label>
+        <label>x0: <input type="number" id="vertex0_x0" /></label>
+        <label>y0: <input type="number" id="vertex0_y0" /></label>
+        <label>z0: <input type="number" id="vertex0_z0" /></label>
     </p>
 
     <p>
-        <label>y0: <input type="number" id="number_y0" /></label>
-        <label>y1: <input type="number" id="number_y1" /></label>
-        <label>y2: <input type="number" id="number_y2" /></label>
+        <label>x1: <input type="number" id="vertex1_x1" /></label>
+        <label>y1: <input type="number" id="vertex1_y1" /></label>
+        <label>z1: <input type="number" id="vertex1_z1" /></label>
     </p>
 
     <p>
-        <label>z0: <input type="number" id="number_z0" /></label>
-        <label>z1: <input type="number" id="number_z1" /></label>
-        <label>z2: <input type="number" id="number_z2" /></label>
+        <label>x2: <input type="number" id="vertex2_x2" /></label>
+        <label>y2: <input type="number" id="vertex2_y2" /></label>
+        <label>z2: <input type="number" id="vertex2_z2" /></label>
     </p>
 
     <!--
@@ -28,18 +28,50 @@
 	-->
     <script src="vec3.js"></script>
     <script>
-        var x0, y0, z0; // (input vertex 0)
-        var x1, y1, z1; // (input vertex 1)
-        var x2, y2, z2; // (input vertex 2)
-        var element_x0 = document.getElementById('number_x0');
-        var element_x1 = document.getElementById('number_x1');
-        var element_x2 = document.getElementById('number_x2');
+        // var x0, y0, z0; // (input vertex 0)
+        // var x1, y1, z1; // (input vertex 1)
+        // var x2, y2, z2; // (input vertex 2)
+        var vertex0 = [3];
+        var vertex1 = [3];
+        var vertex2 = [3];
+        var vertex_all = [vertex0, vertex1, vertex2];
+
+        var element_x0 = document.getElementById('vertex0_x0');
+        var element_y0 = document.getElementById('vertex0_y0');
+        var element_z0 = document.getElementById('vertex0_z0');
+        var element_x1 = document.getElementById('vertex1_x1');
+        var element_y1 = document.getElementById('vertex1_y1');
+        var element_z1 = document.getElementById('vertex1_z1');
+        var element_x2 = document.getElementById('vertex2_x2');
+        var element_y2 = document.getElementById('vertex2_y2');
+        var element_z2 = document.getElementById('vertex2_z2');
         element_x0.addEventListener('input', inputChange);
+        element_y0.addEventListener('input', inputChange);
+        element_z0.addEventListener('input', inputChange);
         element_x1.addEventListener('input', inputChange);
+        element_y1.addEventListener('input', inputChange);
+        element_z1.addEventListener('input', inputChange);
         element_x2.addEventListener('input', inputChange);
+        element_y2.addEventListener('input', inputChange);
+        element_z2.addEventListener('input', inputChange);
 
         function inputChange(event) {
+            var eventID = event.target.id; //イベントを発生させた要素のidを取得
+            for (i = 0; i < 3; i++) {
+                if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
+                    if (eventID.indexOf(x) > -1) {
+                        vertex_all[i][0] = (double)(event.data); //イベントで入力された文字列
+                    }
+                }
+            }
             console.log(event.data);
+        }
+
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                document.write(vertex_all[i][j] + " ");
+            }
+            document.write("<br>");
         }
 
         // var v0 = new Vec3(x0, y0, z0);
