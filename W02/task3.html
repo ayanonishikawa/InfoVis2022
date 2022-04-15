@@ -34,11 +34,11 @@
         var element_x0 = document.getElementById('number_x0');
         var element_x1 = document.getElementById('number_x1');
         var element_x2 = document.getElementById('number_x2');
-        element_x0.addEventListener('input', event);
-        element_x1.addEventListener('input', event);
-        element_x2.addEventListener('input', event);
+        element_x0.addEventListener('input', inputChange);
+        element_x1.addEventListener('input', inputChange);
+        element_x2.addEventListener('input', inputChange);
 
-        function event(event) {
+        function inputChange(event) {
             console.log(event.data);
         }
 
