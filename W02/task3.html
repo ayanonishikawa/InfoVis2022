@@ -64,9 +64,14 @@
             var eventID = event.target.id; //イベントを発生させた要素のidを取得
             for (i = 0; i < 3; i++) {
                 if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
-                    if (eventID.indexOf(x) > -1) {
+                    if (eventID.indexOf("x") > -1) {
                         vertex_all[i][0] = (double)(event.data); //イベントで入力された文字列
+                    } else if (eventID.indexOf("y") > -1) {
+                        vertex_all[i][1] = (double)(event.data); //イベントで入力された文字列
+                    } else {
+                        vertex_all[i][2] = (double)(event.data); //イベントで入力された文字列
                     }
+
                 }
             }
             console.log(event.data);
