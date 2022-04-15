@@ -23,6 +23,10 @@
         <label>z2: <input type="number" id="vertex2_z2" /></label>
     </p>
 
+    <p>
+        <input type="button" id="ok" onclick="event_button()" value="ok" />
+    </p>
+
     <!--
 	<input type="button" value="Click Me" id="click_me"/>
 	-->
@@ -45,6 +49,7 @@
         var element_x2 = document.getElementById('vertex2_x2');
         var element_y2 = document.getElementById('vertex2_y2');
         var element_z2 = document.getElementById('vertex2_z2');
+
         element_x0.addEventListener('input', inputChange);
         element_y0.addEventListener('input', inputChange);
         element_z0.addEventListener('input', inputChange);
@@ -67,11 +72,13 @@
             console.log(event.data);
         }
 
-        for (i = 0; i < 3; i++) {
-            for (j = 0; j < 3; j++) {
-                document.write(vertex_all[i][j] + " ");
+        function event_button() {
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++) {
+                    document.write(vertex_all[i][j] + " ");
+                }
+                document.write("<br>");
             }
-            document.write("<br>");
         }
 
         // var v0 = new Vec3(x0, y0, z0);
