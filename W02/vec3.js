@@ -33,7 +33,7 @@ class Vec3 {
     max() {
         //return Math.max( this.x, this.y, this.z );
         const m = this.x > this.y ? this.x : this.y;
-        document.write("m=" + m) + "<br>";
+        document.write("m=" + m + "<br>");
         return m > this.z ? m : this.z;
     }
 
