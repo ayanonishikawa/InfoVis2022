@@ -14,13 +14,13 @@ class Vec3
         return this;
     }
 
-    // sub( v )
-    // {
-    //     this.x -= v.x;
-    //     this.y -= v.y;
-    //     this.z -= v.z;
-    //     return this;
-    // }
+    sub( v )
+    {
+        this.x -= v.x;
+        this.y -= v.y;
+        this.z -= v.z;
+        return this;
+    }
 
     sum() {
         return this.x + this.y + this.z;
