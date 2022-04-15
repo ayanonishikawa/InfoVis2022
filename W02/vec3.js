@@ -2,10 +2,10 @@ class Vec3
 {
     constructor( x, y, z )
     {
+        document.write("ok_Vec3");
         this.x = x;
         this.y = y;
         this.z = z;
-        document.write("ok_Vec3");
     }
 }
 
