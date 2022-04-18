@@ -4,9 +4,6 @@ class Vec3 {
         this.x = x;
         this.y = y;
         this.z = z;
-
-        window.alert("ok");
-        console.log(this.x + "," + this.y + "," + this.z + "<br>");
     }
 
     add(v) {
@@ -57,5 +54,13 @@ class Vec3 {
     length() {
         return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
     }
+
+    //内積の計算
+    inner_product(v) {
+        var dot = this.x * v.x + this.y * v.y + this.z * this.z;
+        return dot;
+    }
+
+
 
 }

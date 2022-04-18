@@ -86,13 +86,22 @@
                 document.write("<br>");
             }
 
-            console.log("task3");
             var v0 = new Vec3(vertex0[0], vertex0[1], vertex0[2]);
             var v1 = new Vec3(vertex1[0], vertex1[1], vertex1[2]);
             var v2 = new Vec3(vertex2[0], vertex2[1], vertex2[2]);
+            var S = AreaOfTriangle(v0, v1, v2); // (output value)
+            document.write("S = " + S);
         }
 
-        //var S = AreaOfTriangle(v0, v1, v2); // (output value)
+        //三角形の面積を求める関数
+        AreaOfTriangle(vec0, vec1, vec2) {
+            var vec_2_0 = vec0.sub(vec2);
+            var vec_2_1 = vec1.sub(vec2);
+            var dot_20_21 = vec_2_0.inner_product(vec_2_1);
+            var tmp = Math.pow(vec_2_0.length(), 2) * Math.pow(vec_2_1.length(), 2) - dot_20_21 * dot_20_21;
+            var area = Math.sqrt(tmp) / 2;
+            return area;
+        }
     </script>
 </body>
 
