@@ -57,7 +57,7 @@ class Vec3 {
 
     //内積の計算
     inner_product(v) {
-        var dot = this.x * v.x + this.y * v.y + this.z * this.z;
+        var dot = this.x * v.x + this.y * v.y + this.z * v.z;
         return dot;
     }
 
