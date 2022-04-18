@@ -67,11 +67,11 @@
             for (i = 0; i < 3; i++) {
                 if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
                     if (eventID.indexOf('x') > -1) {
-                        vertex_all[i][0] = event.data; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][0] = event.value; //(double)(event.data); //イベントで入力された文字列
                     } else if (eventID.indexOf('y') > -1) {
-                        vertex_all[i][1] = event.data; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][1] = event.value; //(double)(event.data); //イベントで入力された文字列
                     } else {
-                        vertex_all[i][2] = event.data; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][2] = event.value; //(double)(event.data); //イベントで入力された文字列
                     }
 
                 }
