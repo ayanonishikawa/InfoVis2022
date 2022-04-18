@@ -6,95 +6,85 @@
 
 <body>
     <p>
-        <label>x0: <input type="number" id="v0_x" /></label>
-        <label>y0: <input type="number" id="v0_y" /></label>
-        <label>z0: <input type="number" id="v0_z" /></label>
+        <label>x0: <input type="number" id="v0_x0" /></label>
+        <label>y0: <input type="number" id="v0_y0" /></label>
+        <label>z0: <input type="number" id="v0_z0" /></label>
     </p>
-
     <p>
-        <label>x1: <input type="number" id="v1_x" /></label>
-        <label>y1: <input type="number" id="v1_y" /></label>
-        <label>z1: <input type="number" id="v1_z" /></label>
+        <label>x1: <input type="number" id="v1_x1" /></label>
+        <label>y1: <input type="number" id="v1_y1" /></label>
+        <label>z1: <input type="number" id="v1_z1" /></label>
     </p>
-
     <p>
-        <label>x2: <input type="number" id="v2_x" /></label>
-        <label>y2: <input type="number" id="v2_y" /></label>
-        <label>z2: <input type="number" id="v2_z" /></label>
+        <label>x2: <input type="number" id="v2_x2" /></label>
+        <label>y2: <input type="number" id="v2_y2" /></label>
+        <label>z2: <input type="number" id="v2_z2" /></label>
     </p>
-
     <p>
         <input type="button" id="calculate" onclick="event_button()" value="ok" />
     </p>
-
     <!--
 	<input type="button" value="Click Me" id="click_me"/>
 	-->
     <script src="vec3.js"></script>
     <script>
-        var idList = [
-                ['v0_x', 'v0_y', 'v0_z'],
-                ['v1_x', 'v1_y', 'v1_z'],
-                ['v2_x', 'v2_y', 'v2_z']
-            ]
-            // var x0, y0, z0; // (input vertex 0)
-            // var x1, y1, z1; // (input vertex 1)
-            // var x2, y2, z2; // (input vertex 2)
+        // var x0, y0, z0; // (input vertex 0)
+        // var x1, y1, z1; // (input vertex 1)
+        // var x2, y2, z2; // (input vertex 2)
         var vertex0 = [3];
         var vertex1 = [3];
         var vertex2 = [3];
         var vertex_all = [vertex0, vertex1, vertex2];
-
-        var element = [3][3];
-
-        for (i = 0; i < 3; i++) {
-            for (j = 0; j < 3; j++) {
-                element[i][j] = document.getElementById(idList[i][j]);
-            }
-        }
-
-        // for (i = 0; i < 3; i++) {
-        //     for (j = 0; j < 3; j++) {
-        //         element[i][j].addEventListener('input', inputChange);
-        //     }
-        // }
-
+        //while (1) {
+        var element_x0 = document.getElementById('v0_x0');
+        var element_y0 = document.getElementById('v0_y0');
+        var element_z0 = document.getElementById('v0_z0');
+        var element_x1 = document.getElementById('v1_x1');
+        var element_y1 = document.getElementById('v1_y1');
+        var element_z1 = document.getElementById('v1_z1');
+        var element_x2 = document.getElementById('v2_x2');
+        var element_y2 = document.getElementById('v2_y2');
+        var element_z2 = document.getElementById('v2_z2');
+        element_x0.addEventListener('input', inputChange);
+        element_y0.addEventListener('input', inputChange);
+        element_z0.addEventListener('input', inputChange);
+        element_x1.addEventListener('input', inputChange);
+        element_y1.addEventListener('input', inputChange);
+        element_z1.addEventListener('input', inputChange);
+        element_x2.addEventListener('input', inputChange);
+        element_y2.addEventListener('input', inputChange);
+        element_z2.addEventListener('input', inputChange);
+        //}
         function inputChange(event) {
             var eventID = event.target.id; //イベントを発生させた要素のidを取得
             for (i = 0; i < 3; i++) {
                 if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
                     if (eventID.indexOf('x') > -1) {
-                        vertex_all[i][0] = event.value; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][0] = event.data; //(double)(event.data); //イベントで入力された文字列
                     } else if (eventID.indexOf('y') > -1) {
-                        vertex_all[i][1] = event.value; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][1] = event.data; //(double)(event.data); //イベントで入力された文字列
                     } else {
-                        vertex_all[i][2] = event.value; //(double)(event.data); //イベントで入力された文字列
+                        vertex_all[i][2] = event.data; //(double)(event.data); //イベントで入力された文字列
                     }
-
                 }
             }
             console.log(event.data);
         }
-
-        for (i = 0; i < 3; i++) {
-            for (j = 0; j < 3; j++) {
-                vertex_all[i][j] = element[i][j].value;
-            }
-        }
-
         //配列に格納されたか確認
         function event_button() {
             for (i = 0; i < 3; i++) {
                 for (j = 0; j < 3; j++) {
-                    console.log(vertex_all[i][j] + " ");
+                    document.write(vertex_all[i][j] + " ");
                 }
+                document.write("<br>");
             }
-
             var v0 = new Vec3(vertex0[0], vertex0[1], vertex0[2]);
             var v1 = new Vec3(vertex1[0], vertex1[1], vertex1[2]);
             var v2 = new Vec3(vertex2[0], vertex2[1], vertex2[2]);
             var S = AreaOfTriangle(v0, v1, v2); // (output value)
             console.log(typeof(S));
+            var b = BigInt(String(S));
+            document.write(b.toString());
             document.write("S=" + S);
             console.log(S);
         }
