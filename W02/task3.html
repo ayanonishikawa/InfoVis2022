@@ -101,7 +101,7 @@
             console.log(vec_2_1.x + "," + vec_2_1.y + "," + vec_2_1.z);
             var dot_20_21 = vec_2_0.inner_product(vec_2_1);
             console.log(dot_20_21);
-            var tmp = Math.pow(vec_2_0.length(), 2) * Math.pow(vec_2_1.length(), 2) - dot_20_21 * dot_20_21;
+            var tmp = vec_2_0.length() * vec_2_1.length() - dot_20_21 * dot_20_21;
             console.log(tmp);
             var area = Math.sqrt(tmp) / 2;
             return area;
