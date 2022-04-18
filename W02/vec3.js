@@ -5,7 +5,7 @@ class Vec3 {
         this.y = y;
         this.z = z;
 
-        document.write(this.x + "," + this.y + "," + this.z + "<br>");
+        console.log(this.x + "," + this.y + "," + this.z + "<br>");
     }
 
     add(v) {
