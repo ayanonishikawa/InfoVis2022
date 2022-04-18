@@ -97,6 +97,8 @@
         function AreaOfTriangle(vec0, vec1, vec2) {
             var vec_2_0 = vec0.sub(vec2);
             var vec_2_1 = vec1.sub(vec2);
+            console.log(vec_2_0.x + "," + vec_2_0.y + "," + vec_2_0.z);
+            console.log(vec_2_1.x + "," + vec_2_1.y + "," + vec_2_1.z);
             var dot_20_21 = vec_2_0.inner_product(vec_2_1);
             console.log(dot_20_21);
             var tmp = Math.pow(vec_2_0.length(), 2) * Math.pow(vec_2_1.length(), 2) - dot_20_21 * dot_20_21;
