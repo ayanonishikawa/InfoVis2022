@@ -5,6 +5,7 @@ class Vec3 {
         this.y = y;
         this.z = z;
 
+        window.alert("ok");
         console.log(this.x + "," + this.y + "," + this.z + "<br>");
     }
 
