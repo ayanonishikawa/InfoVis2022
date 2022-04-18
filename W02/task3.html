@@ -40,27 +40,27 @@
         var vertex2 = [3];
         var vertex_all = [vertex0, vertex1, vertex2];
 
-        while (1) {
-            var element_x0 = document.getElementById('v0_x0');
-            var element_y0 = document.getElementById('v0_y0');
-            var element_z0 = document.getElementById('v0_z0');
-            var element_x1 = document.getElementById('v1_x1');
-            var element_y1 = document.getElementById('v1_y1');
-            var element_z1 = document.getElementById('v1_z1');
-            var element_x2 = document.getElementById('v2_x2');
-            var element_y2 = document.getElementById('v2_y2');
-            var element_z2 = document.getElementById('v2_z2');
+        //while (1) {
+        var element_x0 = document.getElementById('v0_x0');
+        var element_y0 = document.getElementById('v0_y0');
+        var element_z0 = document.getElementById('v0_z0');
+        var element_x1 = document.getElementById('v1_x1');
+        var element_y1 = document.getElementById('v1_y1');
+        var element_z1 = document.getElementById('v1_z1');
+        var element_x2 = document.getElementById('v2_x2');
+        var element_y2 = document.getElementById('v2_y2');
+        var element_z2 = document.getElementById('v2_z2');
 
-            element_x0.addEventListener('input', inputChange);
-            element_y0.addEventListener('input', inputChange);
-            element_z0.addEventListener('input', inputChange);
-            element_x1.addEventListener('input', inputChange);
-            element_y1.addEventListener('input', inputChange);
-            element_z1.addEventListener('input', inputChange);
-            element_x2.addEventListener('input', inputChange);
-            element_y2.addEventListener('input', inputChange);
-            element_z2.addEventListener('input', inputChange);
-        }
+        element_x0.addEventListener('input', inputChange);
+        element_y0.addEventListener('input', inputChange);
+        element_z0.addEventListener('input', inputChange);
+        element_x1.addEventListener('input', inputChange);
+        element_y1.addEventListener('input', inputChange);
+        element_z1.addEventListener('input', inputChange);
+        element_x2.addEventListener('input', inputChange);
+        element_y2.addEventListener('input', inputChange);
+        element_z2.addEventListener('input', inputChange);
+        //}
 
         function inputChange(event) {
             var eventID = event.target.id; //イベントを発生させた要素のidを取得
