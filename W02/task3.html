@@ -21,16 +21,11 @@
         <label>z2: <input type="number" id="v2_z2" /></label>
     </p>
     <p>
-        <input type="button" id="calculate" onclick="event_button()" value="ok" />
+        <input type="button" id="calculate" onclick="event_button()" value="calculate" />
     </p>
-    <!--
-	<input type="button" value="Click Me" id="click_me"/>
-	-->
+    <p id="target"></p>
     <script src="vec3.js"></script>
     <script>
-        // var x0, y0, z0; // (input vertex 0)
-        // var x1, y1, z1; // (input vertex 1)
-        // var x2, y2, z2; // (input vertex 2)
         var vertex0 = [3];
         var vertex1 = [3];
         var vertex2 = [3];
@@ -45,31 +40,7 @@
         var element_x2 = document.getElementById('v2_x2');
         var element_y2 = document.getElementById('v2_y2');
         var element_z2 = document.getElementById('v2_z2');
-        // element_x0.addEventListener('input', inputChange);
-        // element_y0.addEventListener('input', inputChange);
-        // element_z0.addEventListener('input', inputChange);
-        // element_x1.addEventListener('input', inputChange);
-        // element_y1.addEventListener('input', inputChange);
-        // element_z1.addEventListener('input', inputChange);
-        // element_x2.addEventListener('input', inputChange);
-        // element_y2.addEventListener('input', inputChange);
-        // element_z2.addEventListener('input', inputChange);
 
-        function inputChange(event) {
-            var eventID = event.target.id; //イベントを発生させた要素のidを取得
-            for (i = 0; i < 3; i++) {
-                if (eventID.indexOf(i) > -1) { //数字iがidに含まれるなら
-                    if (eventID.indexOf('x') > -1) {
-                        vertex_all[i][0] = event.data; //(double)(event.data); //イベントで入力された文字列
-                    } else if (eventID.indexOf('y') > -1) {
-                        vertex_all[i][1] = event.data; //(double)(event.data); //イベントで入力された文字列
-                    } else {
-                        vertex_all[i][2] = event.data; //(double)(event.data); //イベントで入力された文字列
-                    }
-                }
-            }
-            console.log(event.data);
-        }
         //配列に格納されたか確認
         function event_button() {
             vertex_all[0][0] = element_x0.value;
@@ -91,7 +62,7 @@
             var v2 = new Vec3(vertex2[0], vertex2[1], vertex2[2]);
             var S = AreaOfTriangle(v0, v1, v2); // (output value)
             console.log(typeof(S));
-            document.write("S=" + S);
+            document.getElementById("target").innerHTML = "S = " + S;
             console.log(S);
         }
 
