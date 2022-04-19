@@ -15,8 +15,8 @@
         <input type="button" id="show" onclick="event_button()" value="Show the result" />
     </p>
     <p id="target"></p>
-    <p id="target_mid"></p>
-    <p id="target_max"></p>
+    <!-- <p id="target_mid"></p>
+    <p id="target_max"></p> -->
     <script src="vec3.js"></script>
     <script>
         var x, y, z;
@@ -35,8 +35,8 @@
             var max = v.max();
             console.log(x + "," + y + "," + z);
             document.getElementById("target").innerHTML = "min = " + min + "<br>";
-            document.getElementById("target_mid").innerHTML = "mid = " + mid + "<br>";
-            document.getElementById("target_max").innerHTML = "max = " + max + "<br>";
+            document.getElementById("target").innerHTML = "mid = " + mid + "<br>";
+            document.getElementById("target").innerHTML = "max = " + max + "<br>";
         }
     </script>
 </body>
