@@ -24,9 +24,9 @@
         var element_3 = document.getElementById('number3');
 
         function event_button() {
-            x = element_1.value;
-            y = element_2.value;
-            z = element_3.value;
+            x = (Number)(element_1.value);
+            y = (Number)(element_2.value);
+            z = (Number)(element_3.value);
             var v = new Vec3(x, y, z);
             var min = v.min();
             var mid = v.mid();
