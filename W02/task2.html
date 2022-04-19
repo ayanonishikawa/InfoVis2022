@@ -5,18 +5,35 @@
 </head>
 
 <body>
+    <p>
+        <label>Input 3 numbers:</label>
+        <input type="number" id="number1" />
+        <input type="number" id="number2" />
+        <input type="number" id="number3" />
+    </p>
+    <p>
+        <input type="button" id="show" onclick="event_button()" value="Show the result" />
+    </p>
     <script src="vec3.js"></script>
     <script>
-        var x = 5,
-            y = 4,
-            z = 8;
-        var v = new Vec3(x, y, z);
-        var min = v.min();
-        var mid = v.mid();
-        var max = v.max();
-        document.write("min = " + min + "<br>");
-        document.write("mid = " + mid + "<br>");
-        document.write("max2 = " + max + "<br>");
+        var x, y, z;
+
+        var element_1 = document.getElementById('number1');
+        var element_2 = document.getElementById('number2');
+        var element_3 = document.getElementById('number3');
+
+        function event_button() {
+            x = element_1.value;
+            y = element_2.value;
+            z = element_3.value;
+            var v = new Vec3(x, y, z);
+            var min = v.min();
+            var mid = v.mid();
+            var max = v.max();
+            document.write("min = " + min + "<br>");
+            document.write("mid = " + mid + "<br>");
+            document.write("max = " + max + "<br>");
+        }
     </script>
 </body>
 
