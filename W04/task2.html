@@ -8,7 +8,7 @@
 	 var svg = d3.select("body").append("svg");
      var padding=10;
      var height=20;
-	 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/w04_task2.csv", draw );
+	 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv", draw );
 	 function draw(data){
 	    svg.selectAll("rect")
 		.data(data)
@@ -16,16 +16,16 @@
 	        .append("rect")
             .attr("x", padding*8)
             .attr("y", function(d,i){ return padding + i * ( height + padding ); })
-            .attr("width", function(d){ return d.width; })
-            .attr("height", height)
-	        .style("fill", function(d){ return d.color; });
+            .attr("width", function(d){ return d.amount; })
+            .attr("height", height);
+	        // .style("fill", function(d){ return d.color; });
 		svg.selectAll("text")
 		.data(data)
 			.enter()
 			.append("text")
 			.attr("x",function(d){return padding;})
 			.attr("y",function(d,i){return padding*2.5 + i * ( height + padding );})
-			.text(function(d){return d.label;})
+			.text(function(d){return d.rank+": "+d.name;})
 			.attr("font_size",10);
 			//.attr("textLength", function(d){return padding*7;})
 	 };
