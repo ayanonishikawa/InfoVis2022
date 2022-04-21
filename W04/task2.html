@@ -24,7 +24,7 @@
 			.enter()
 			.append("text")
 			.attr("x",function(d){return padding;})
-			.attr("y",function(d,i){return padding + i * ( height + padding );})
+			.attr("y",function(d,i){return padding*2 + i * ( height + padding );})
 			.text(function(d){return d.label;})
 			.attr("font_size",10);
 			//.attr("textLength", function(d){return padding*7;})
