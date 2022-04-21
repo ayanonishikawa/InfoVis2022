@@ -3,9 +3,12 @@
         <title>W04: Task2</title>
     </head>
     <body>
+		<p>Vitamin C content</p>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script>
-	 var svg = d3.select("body").append("svg").attr("viewBox","0 0 600 600");
+		var p = d3.select("body").select("p");
+		p.attr("text-decoration","underline");
+	 var svg = d3.select("body").append("svg").attr("viewBox","0 30 600 630");
      var padding=10;
      var height=20;
 	 //  svg.text("Vitamin C content").attr("x", 10).attr("y",padding).attr("text-decoration","underline");
