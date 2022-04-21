@@ -25,10 +25,11 @@
 			.append("text")
 			.attr("x",function(d){return padding;})
 			.attr("y",function(d,i){return padding + i * ( height + padding );})
-			.text(function(d){return d.label;});
+			.text(function(d){return d.label;})
+			.attr("font_size",10);
 			//.attr("textLength", function(d){return padding*7;})
 	 };
-	 console.log("Label ok");
+	 console.log("Label ok2");
 	</script>
     </body>
 </html>
