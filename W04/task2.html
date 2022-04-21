@@ -18,17 +18,17 @@
             .attr("x", padding*22)
             .attr("y", function(d,i){ return padding + i *2* ( height + padding ); })
             .attr("width", function(d){ return d.amount; })
-            .attr("height", height);
-	        // .style("fill", function(d){ return d.color; });
-		// svg.selectAll("text")
-		// .data(data)
-		// 	.enter()
-		// 	.append("text")
-		// 	.attr("x",function(d){return padding;})
-		// 	.attr("y",function(d,i){return padding*2.5 + i * 2*( height + padding );})
-		// 	.text(function(d){return d.rank+": "+d.name;})
-		// 	.attr("font_size",10);
-			//.attr("textLength", function(d){return padding*7;})
+            .attr("height", height)
+	        .style("fill", function(d){ return d.color; });
+		svg.selectAll("text")
+		.data(data)
+			.enter()
+			.append("text")
+			.attr("x",function(d){return padding;})
+			.attr("y",function(d,i){return padding*2.5 + i * 2*( height + padding );})
+			.text(function(d){return d.rank+": "+d.name;})
+			.attr("font_size",10);
+			// .attr("textLength", function(d){return padding*7;});
 	 };
 	 console.log("Label ok2");
 	</script>
