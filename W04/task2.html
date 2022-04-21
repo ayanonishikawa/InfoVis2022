@@ -20,7 +20,7 @@
 	        .append("rect")
             .attr("x", padding*22)
             .attr("y", function(d,i){ return 30+padding + i *2* ( height + padding ); })
-            .attr("width", function(d){ return d.amount; })
+            .attr("width", function(d){ return d.amount*2; })
             .attr("height", height)
 	        .style("fill", function(d){ return d.color; });
 		svg.selectAll("text")
