@@ -5,10 +5,10 @@
     <body>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script>
-	 var svg = d3.select("body").append("svg");
-	//  svg.text("Vitamin C content").attr("text-decoration","underline");
+	 var svg = d3.select("body").append("svg").attr("viewBox","0 0 600 600");
      var padding=10;
      var height=20;
+	 //  svg.text("Vitamin C content").attr("x", 10).attr("y",padding).attr("text-decoration","underline");
 	 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv", draw );
 	 function draw(data){
 	    svg.selectAll("rect")
@@ -16,7 +16,7 @@
 	        .enter()
 	        .append("rect")
             .attr("x", padding*22)
-            .attr("y", function(d,i){ return padding + i * ( height + padding ); })
+            .attr("y", function(d,i){ return padding + i *2* ( height + padding ); })
             .attr("width", function(d){ return d.amount; })
             .attr("height", height);
 	        // .style("fill", function(d){ return d.color; });
@@ -25,7 +25,7 @@
 		// 	.enter()
 		// 	.append("text")
 		// 	.attr("x",function(d){return padding;})
-		// 	.attr("y",function(d,i){return padding*2.5 + i * ( height + padding );})
+		// 	.attr("y",function(d,i){return padding*2.5 + i * 2*( height + padding );})
 		// 	.text(function(d){return d.rank+": "+d.name;})
 		// 	.attr("font_size",10);
 			//.attr("textLength", function(d){return padding*7;})
