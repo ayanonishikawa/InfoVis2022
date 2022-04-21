@@ -10,15 +10,15 @@
      var height=20;
 	 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/w04_task2.csv", draw );
 	 function draw(data){
-	    // svg.selectAll("rect")
-		// .data(data)
-	    //     .enter()
-	    //     .append("rect")
-        //     .attr("x", padding*8)
-        //     .attr("y", function(d,i){ return padding + i * ( height + padding ); })
-        //     .attr("width", function(d){ return d.width; })
-        //     .attr("height", height)
-	    //     .style("fill", function(d){ return d.color; });
+	    svg.selectAll("rect")
+		.data(data)
+	        .enter()
+	        .append("rect")
+            .attr("x", padding*8)
+            .attr("y", function(d,i){ return padding + i * ( height + padding ); })
+            .attr("width", function(d){ return d.width; })
+            .attr("height", height)
+	        .style("fill", function(d){ return d.color; });
 		svg.selectAll("text")
 		.data(data)
 			.enter()
