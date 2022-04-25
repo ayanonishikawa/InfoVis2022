@@ -1,11 +1,11 @@
-rank,name,amount
-1,"Red bell pepper",170
-2,"Yellow bell pepper",150
-3,"Parsley",120
-3,"Broccoli",120
-5,"Cauliflower",81
-6,"Green bell pepper",76
-7,"Jew's mallow",65
-8,"Podded pea",60
-9,"Shishito pepper",57
-10,"Squash",43
+rank,name,amount,color
+1,"Red bell pepper",170,yellow
+2,"Yellow bell pepper",150,yellow
+3,"Parsley",120,yellow
+3,"Broccoli",120,yellow
+5,"Cauliflower",81,black
+6,"Green bell pepper",76,black
+7,"Jew's mallow",65,black
+8,"Podded pea",60,black
+9,"Shishito pepper",57,black
+10,"Squash",43,black
