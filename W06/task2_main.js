@@ -55,10 +55,14 @@ class ScatterPlot {
             .ticks(6);
         
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
+            .attr('transform', `translate(0, ${self.inner_height})`)
+            .append("text")
+            .text("X_label");
         
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`);
+            .attr('transform', `translate(0, 0)`)
+            .append("text")
+            .text("Y_label");
     }
 
     update() {
