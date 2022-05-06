@@ -28,10 +28,14 @@ function ShowScatterPlot( data ) {
 
     var xaxis = d3.axisBottom( xscale )
         .ticks(8);
+    
+    var yaxis = d3.axisLeft( yscale )
+        .ticks(8);
 
     svg.append('g')
         .attr('transform', `translate(0, ${height - margin.top - margin.bottom})`)
-        .call( xaxis );
+        .call( xaxis )
+        .call(yaxis);
 
     svg.selectAll("circle")
         .data(data)
