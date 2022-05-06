@@ -1,7 +1,7 @@
 d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W04/data.csv")
     .then( data => {
         // Convert strings to numbers
-        data.forEach( d => { d.x = +d.x; d.y = +d.y; });
+        data.forEach( d => { d.x = d.x; d.y = d.y; });
         data.forEach(d=>console.log(d.x+","+d.y));
         ShowScatterPlot(data);
     })
