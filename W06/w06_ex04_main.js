@@ -27,7 +27,7 @@ function ShowScatterPlot( data ) {
         .range( [0, height - margin.top - margin.bottom] );
 
     var xaxis = d3.axisBottom( xscale )
-        .ticks(8);
+        .ticks(10);
     
     var yaxis = d3.axisLeft( yscale )
         .ticks(8);
