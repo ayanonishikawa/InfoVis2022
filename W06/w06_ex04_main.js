@@ -27,7 +27,7 @@ function ShowScatterPlot( data ) {
         .range( [0, height - margin.top - margin.bottom] );
 
     var xaxis = d3.axisBottom( xscale )
-        .ticks(6);
+        .ticks(8);
 
     svg.append('g')
         .attr('transform', `translate(0, ${height - margin.top - margin.bottom})`)
