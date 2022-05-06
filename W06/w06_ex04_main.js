@@ -33,7 +33,7 @@ function ShowScatterPlot( data ) {
         .ticks(8);
 
     svg.append('g')
-        .attr('transform', `translate(${width - margin.left - margin.right}, ${height - margin.top - margin.bottom})`)
+        .attr('transform', `translate(0, ${height - margin.top - margin.bottom})`)
         .call( xaxis );
         //.call(yaxis);
 
