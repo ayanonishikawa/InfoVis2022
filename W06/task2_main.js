@@ -34,7 +34,13 @@ class ScatterPlot {
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
+            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`)
+            .append("text")
+            .attr("x",self.config.margin.left+(self.config.width - self.config.margin.left - self.config.margin.right)/2)
+            .attr("y",4)
+            .text("Chart Title")
+            .attr("font-weight", "middle");
+            
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
