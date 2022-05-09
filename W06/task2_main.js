@@ -1,14 +1,13 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then(data => {
         data.forEach(d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok8");
+        console.log("ok1");
         var config = {
             parent: '#drawing_region',
-            width: 300,
-            height: 300,
-            margin: { top: 30, right: 30, bottom: 70, left: 70 },
+            width: 256,
+            height: 256,
+            margin: { top: 10, right: 10, bottom: 40, left: 40 },
         };
-
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
     })
@@ -17,13 +16,12 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     });
 
 class ScatterPlot {
-
     constructor(config, data) {
         this.config = {
             parent: config.parent,
-            width: config.width || 300,
-            height: config.height || 300,
-            margin: config.margin || { top: 30, right: 30, bottom: 70, left: 70 }
+            width: config.width || 256,
+            height: config.height || 256,
+            margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.data = data;
         this.init();
@@ -31,14 +29,12 @@ class ScatterPlot {
 
     init() {
         let self = this;
-
         self.svg = d3.select(self.config.parent)
             .attr('width', self.config.width)
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
-
+            .attr('transform', 'translate(${self.config.margin.left}, ${self.config.margin.top})');
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
@@ -50,27 +46,18 @@ class ScatterPlot {
             .range([self.inner_height, 0]);
 
         self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(10);
+            .ticks(10)
+            .tickPadding(2);
 
         self.yaxis = d3.axisLeft(self.yscale)
-            .ticks(10);
+            .ticks(10)
+            .tickPadding(2);
 
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height}`)
-            .append("text")
-            .attr("x", self.config.margin.left)
-            .attr("y", self.inner_height)
-            .attr("text-anchor", "middle")
-            .text("X_label");
+            .attr('transform', 'translate(0, ${self.inner_height})');
 
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`)
-            .append("text")
-            .attr("x", 0)
-            .attr("y", self.inner_height / 2)
-            .attr("transform", "rotate(-90)")
-            .attr("text-anchor", "middle")
-            .text("Y_label");
+            .attr('transform', 'translate(0, 0)');
     }
 
     update() {
@@ -107,18 +94,8 @@ class ScatterPlot {
 
         self.xaxis_group
             .call(self.xaxis);
-        // .append("text")
-        // .attr("x", self.config.margin.left)
-        // .attr("y", self.inner_height)
-        // .attr("text-anchor", "middle")
-        // .text("X_label");
+
         self.yaxis_group
             .call(self.yaxis);
-        // .append("text")
-        // .attr("x", 0)
-        // .attr("y", self.inner_height/2)
-        // .attr("transform", "rotate(-90)")
-        // .attr("text-anchor", "middle")
-        // .text("Y_label");
     }
 }
