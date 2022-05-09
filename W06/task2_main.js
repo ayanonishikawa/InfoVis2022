@@ -1,12 +1,12 @@
-d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W04/data.csv")
+d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok3");
+        console.log("ok1");
         var config = {
             parent: '#drawing_region',
             width: 256,
             height: 256,
-            margin: {top:10, right:10, bottom:20, left:40}
+            margin: {top:10, right:10, bottom:40, left:40},
         };
 
         const scatter_plot = new ScatterPlot( config, data );
@@ -41,12 +41,13 @@ class ScatterPlot {
 
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
+        console.log(self.inner_width+","+self.inner_height);
 
         self.xscale = d3.scaleLinear()
             .range( [0, self.inner_width] );
 
         self.yscale = d3.scaleLinear()
-            .range( [0, self.inner_height] );
+            .range( [self.inner_height, 0] );
 
         self.xaxis = d3.axisBottom( self.xscale )
             .ticks(6);
@@ -68,13 +69,20 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        const xmin = d3.min( self.data, d => d.x );
+        const xmin = 0;
         const xmax = d3.max( self.data, d => d.x );
-        self.xscale.domain( [xmin, xmax] );
+        //self.xscale.domain( [xmin, xmax+20] );
 
-        const ymin = d3.min( self.data, d => d.y );
+        const ymin = 0;
         const ymax = d3.max( self.data, d => d.y );
-        self.yscale.domain( [ymin, ymax] );
+        //self.yscale.domain( [ymin, ymax+20] );
+
+        var larger=0;
+        if(xmin>xmax) larger=xmin;
+        else larger=xmax;
+
+        self.xscale.domain( [xmin, larger+20] );
+        self.yscale.domain( [ymin, larger+20] );
 
         self.render();
     }
