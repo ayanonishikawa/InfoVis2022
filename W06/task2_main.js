@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then(data => {
         data.forEach(d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok2");
+        console.log("ok3");
         var config = {
             parent: '#drawing_region',
             width: 256,
