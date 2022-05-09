@@ -1,11 +1,11 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then(data => {
         data.forEach(d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok8");
+        console.log("ok9");
         var config = {
             parent: '#drawing_region',
-            width: 256,
-            height: 256,
+            width: 300,
+            height: 300,
             margin: { top: 30, right: 30, bottom: 40, left: 40 },
         };
         const scatter_plot = new ScatterPlot(config, data);
@@ -115,8 +115,8 @@ class ScatterPlot {
             .call(self.xaxis)
             .append("text")
             .text("X_label")
-            .attr("x", self.config.margin.left)
-            .attr("y", self.inner_height)
+            .attr("x", -20)
+            .attr("y", self.inner_height+20)
             .attr("text-anchor", "middle");
             
 
@@ -124,7 +124,7 @@ class ScatterPlot {
             .call(self.yaxis)
             .append("text")
             .text("Y_label")
-            .attr("x", 0)
+            .attr("x", 10)
             .attr("y", self.inner_height / 2)
             .attr("transform", "rotate(-90)")
             .attr("text-anchor", "middle");
