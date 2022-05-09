@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then(data => {
         data.forEach(d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok3");
+        console.log("ok4");
         var config = {
             parent: '#drawing_region',
             width: 256,
@@ -40,7 +40,7 @@ class ScatterPlot {
             .attr("y",4)
             .text("Chart Title")
             .attr("font-weight", "middle");
-            
+
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
