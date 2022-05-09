@@ -37,7 +37,7 @@ class ScatterPlot {
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
+            .attr('transform','translate(${self.config.margin.left}, ${self.config.margin.top})');
 
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
@@ -58,10 +58,10 @@ class ScatterPlot {
             .tickPadding(2);
         
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
+            .attr('transform', 'translate(0, ${self.inner_height})');
         
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`);
+            .attr('transform', 'translate(0, 0)');
     }
 
     update() {
