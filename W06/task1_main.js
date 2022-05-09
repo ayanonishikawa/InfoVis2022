@@ -1,4 +1,4 @@
-d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/w04_task1.csv")
+d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
         console.log("ok8");
@@ -41,6 +41,7 @@ class ScatterPlot {
 
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
+        console.log(self.inner_width+","+self.inner_height);
 
         self.xscale = d3.scaleLinear()
             .range( [0, self.inner_width] );
