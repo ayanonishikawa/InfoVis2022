@@ -6,7 +6,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
             parent: '#drawing_region',
             width: 256,
             height: 256,
-            margin: {top:10, right:10, bottom:20, left:40},
+            margin: {top:10, right:10, bottom:40, left:40},
         };
 
         const scatter_plot = new ScatterPlot( config, data );
