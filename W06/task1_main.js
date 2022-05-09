@@ -1,7 +1,7 @@
 d3.csv("https://vizlab-kobe-lecture.github.io/InfoVis2021/W04/data.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok7");
+        console.log("ok8");
         var config = {
             parent: '#drawing_region',
             width: 256,
@@ -49,12 +49,10 @@ class ScatterPlot {
             .range( [self.inner_height, 0] );
 
         self.xaxis = d3.axisBottom( self.xscale )
-            //.ticks(6)
-            .ticks("min",0);
+            ticks(6);
 
         self.yaxis = d3.axisLeft( self.yscale )
-            //.ticks(6)
-            .ticks("min",0);
+            .ticks(6);
         
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
@@ -66,11 +64,11 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        const xmin = d3.min( self.data, d => d.x );
+        const xmin = d3.min( 0 );
         const xmax = d3.max( self.data, d => d.x );
         self.xscale.domain( [xmin, xmax] );
 
-        const ymin = d3.min( self.data, d => d.y );
+        const ymin = d3.min( 0 );
         const ymax = d3.max( self.data, d => d.y );
         self.yscale.domain( [ymin, ymax] );
 
