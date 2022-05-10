@@ -71,6 +71,22 @@ class ScatterPlot {
             // .attr("transform", "rotate(-90)")
             // .attr("text-anchor", "middle")
             // .text("Y_label");
+
+        self.chart
+            .append("text")
+            .attr("x", self.config.margin.left)
+            .attr("y", self.inner_height)
+            .attr("text-anchor", "middle")
+            .text("X_label");
+        
+        self.chart
+            .append("text")
+            .attr("x", 0)
+            .attr("y", self.inner_height/2)
+            .attr("transform", "rotate(-90)")
+            .attr("text-anchor", "middle")
+            .text("Y_label");
+
     }
 
     update() {
