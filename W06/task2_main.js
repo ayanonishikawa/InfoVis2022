@@ -82,7 +82,7 @@ class ScatterPlot {
         self.chart
             .append("text")
             .attr("x", self.config.margin.left+self.inner_width/2)
-            .attr("y", self.inner_height+self.margin.bottom)
+            .attr("y", self.inner_height+self.config.margin.bottom)
             .attr("text-anchor", "middle")
             .text("X_label");
         
