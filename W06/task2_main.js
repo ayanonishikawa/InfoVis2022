@@ -1,12 +1,12 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok9");
+        console.log("ok10");
         var config = {
             parent: '#drawing_region',
-            width: 300,
-            height: 300,
-            margin: {top:30, right:30, bottom:60, left:60},
+            width: 400,
+            height: 400,
+            margin: {top:50, right:350, bottom:100, left:100},
         };
 
         const scatter_plot = new ScatterPlot( config, data );
@@ -57,20 +57,9 @@ class ScatterPlot {
         
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
-            // .append("text")
-            // .attr("x", self.config.margin.left)
-            // .attr("y", self.inner_height)
-            // .attr("text-anchor", "middle")
-            // .text("X_label");
         
         self.yaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, 0)`);
-            // .append("text")
-            // .attr("x", 0)
-            // .attr("y", self.inner_height/2)
-            // .attr("transform", "rotate(-90)")
-            // .attr("text-anchor", "middle")
-            // .text("Y_label");
 
         self.chart
             .append("text")
@@ -78,7 +67,7 @@ class ScatterPlot {
             .attr("y", 0)
             .attr("text-anchor", "middle")
             .text("Chart Title")
-            .attr("font-size","20pt")
+            .attr("font-size","15pt")
             .attr("font-weight", "bold")
 
         self.chart
@@ -86,7 +75,7 @@ class ScatterPlot {
             .attr("x", self.inner_width/2)
             .attr("y", self.inner_height+self.config.margin.bottom)
             .attr("text-anchor", "middle")
-            .attr("font-size","15pt")
+            .attr("font-size","10pt")
             .text("X_label");
         
         self.chart
@@ -95,7 +84,7 @@ class ScatterPlot {
             .attr("y", 10)
             .attr("transform", "rotate(-90)")
             .attr("text-anchor", "middle")
-            .attr("font-size","15pt")
+            .attr("font-size","10pt")
             .text("Y_label");
 
     }
@@ -134,19 +123,8 @@ class ScatterPlot {
 
         self.xaxis_group
             .call( self.xaxis );
-            // .append("text")
-            // .attr("x", self.config.margin.left)
-            // .attr("y", self.inner_height)
-            // .attr("text-anchor", "middle")
-            // .text("X_label");
 
         self.yaxis_group
             .call( self.yaxis );
-            // .append("text")
-            // .attr("x", 0)
-            // .attr("y", self.inner_height/2)
-            // .attr("transform", "rotate(-90)")
-            // .attr("text-anchor", "middle")
-            // .text("Y_label");
     }
 }
