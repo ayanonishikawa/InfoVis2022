@@ -50,10 +50,21 @@ class ScatterPlot {
             .range( [self.inner_height, 0] );
 
         self.xaxis = d3.axisBottom( self.xscale )
-            .ticks(6);
+            .ticks(6)
+            .append("text")
+            .attr("x", self.config.margin.left)
+            .attr("y", self.inner_height)
+            .attr("text-anchor", "middle")
+            .text("X_label");
 
         self.yaxis = d3.axisLeft( self.yscale )
-            .ticks(6);
+            .ticks(6)
+            .append("text")
+            .attr("x", 0)
+            .attr("y", self.inner_height/2)
+            .attr("transform", "rotate(-90)")
+            .attr("text-anchor", "middle")
+            .text("Y_label");
         
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
