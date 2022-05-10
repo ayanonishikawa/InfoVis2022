@@ -78,7 +78,8 @@ class ScatterPlot {
             .attr("y", 0)
             .attr("text-anchor", "middle")
             .text("Chart Title")
-            .attr("font-size","10pt");
+            .attr("font-size","10pt")
+            .attr("font-weight", "middle")
 
         self.chart
             .append("text")
