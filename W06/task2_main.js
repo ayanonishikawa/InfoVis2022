@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok5");
+        console.log("ok6");
         var config = {
             parent: '#drawing_region',
             width: 256,
@@ -56,23 +56,21 @@ class ScatterPlot {
             .ticks(6);
         
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`)
-            .call( self.xaxis )
-            .append("text")
-            .attr("x", self.config.margin.left)
-            .attr("y", self.inner_height)
-            .attr("text-anchor", "middle")
-            .text("X_label");
+            .attr('transform', `translate(0, ${self.inner_height})`);
+            // .append("text")
+            // .attr("x", self.config.margin.left)
+            // .attr("y", self.inner_height)
+            // .attr("text-anchor", "middle")
+            // .text("X_label");
         
         self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`)
-            .call( self.yaxis )
-            .append("text")
-            .attr("x", 0)
-            .attr("y", self.inner_height/2)
-            .attr("transform", "rotate(-90)")
-            .attr("text-anchor", "middle")
-            .text("Y_label");
+            .attr('transform', `translate(0, 0)`);
+            // .append("text")
+            // .attr("x", 0)
+            // .attr("y", self.inner_height/2)
+            // .attr("transform", "rotate(-90)")
+            // .attr("text-anchor", "middle")
+            // .text("Y_label");
     }
 
     update() {
