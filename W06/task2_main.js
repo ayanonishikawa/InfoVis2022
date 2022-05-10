@@ -4,9 +4,9 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
         console.log("ok7");
         var config = {
             parent: '#drawing_region',
-            width: 256,
-            height: 256,
-            margin: {top:10, right:10, bottom:40, left:40},
+            width: 300,
+            height: 300,
+            margin: {top:30, right:30, bottom:40, left:40},
         };
 
         const scatter_plot = new ScatterPlot( config, data );
@@ -21,8 +21,8 @@ class ScatterPlot {
     constructor( config, data ) {
         this.config = {
             parent: config.parent,
-            width: config.width || 256,
-            height: config.height || 256,
+            width: config.width || 300,
+            height: config.height || 300,
             margin: config.margin || {top:10, right:10, bottom:10, left:10}
         }
         this.data = data;
@@ -50,10 +50,10 @@ class ScatterPlot {
             .range( [self.inner_height, 0] );
 
         self.xaxis = d3.axisBottom( self.xscale )
-            .ticks(6);
+            .ticks(10);
 
         self.yaxis = d3.axisLeft( self.yscale )
-            .ticks(6);
+            .ticks(10);
         
         self.xaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, ${self.inner_height})`);
@@ -74,15 +74,15 @@ class ScatterPlot {
 
         self.chart
             .append("text")
-            .attr("x", self.config.margin.left)
-            .attr("y", self.inner_height)
+            .attr("x", self.config.margin.left+self.inner_width/2)
+            .attr("y", self.inner_height+self.margin.bottom)
             .attr("text-anchor", "middle")
             .text("X_label");
         
         self.chart
             .append("text")
             .attr("x", 0)
-            .attr("y", self.inner_height/2)
+            .attr("y", self.inner_height)
             .attr("transform", "rotate(-90)")
             .attr("text-anchor", "middle")
             .text("Y_label");
