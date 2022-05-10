@@ -74,22 +74,22 @@ class ScatterPlot {
 
         self.chart
             .append("text")
-            .attr("x", self.config.margin.left+self.inner_width/2)
+            .attr("x", self.inner_width/2)
             .attr("y", 0)
             .attr("text-anchor", "middle")
             .text("Chart Title");
 
         self.chart
             .append("text")
-            .attr("x", self.config.margin.left+self.inner_width/2)
+            .attr("x", self.inner_width/2)
             .attr("y", self.inner_height+self.config.margin.bottom)
             .attr("text-anchor", "middle")
             .text("X_label");
         
         self.chart
             .append("text")
-            .attr("x", 0)
-            .attr("y", self.inner_height)
+            .attr("x", self.inner_height/2)
+            .attr("y", 10)
             .attr("transform", "rotate(-90)")
             .attr("text-anchor", "middle")
             .text("Y_label");
