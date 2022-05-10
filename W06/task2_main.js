@@ -77,13 +77,15 @@ class ScatterPlot {
             .attr("x", self.inner_width/2)
             .attr("y", 0)
             .attr("text-anchor", "middle")
-            .text("Chart Title");
+            .text("Chart Title")
+            .attr("font-size","10pt");
 
         self.chart
             .append("text")
             .attr("x", self.inner_width/2)
             .attr("y", self.inner_height+self.config.margin.bottom)
             .attr("text-anchor", "middle")
+            .attr("font-size","6pt")
             .text("X_label");
         
         self.chart
@@ -92,6 +94,7 @@ class ScatterPlot {
             .attr("y", 10)
             .attr("transform", "rotate(-90)")
             .attr("text-anchor", "middle")
+            .attr("font-size","6pt")
             .text("Y_label");
 
     }
