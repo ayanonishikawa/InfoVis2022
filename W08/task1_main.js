@@ -1,6 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
-        data.forEach(d => { d.label = +d.name; d.value = +d.amount; });
+        data.forEach(d => { d.label = +d.name; d.value = +d.amount; 
+        console.log(d.label+","+d.value)});
         console.log("ok");
         var config = {
             parent: '#drawing_region',
