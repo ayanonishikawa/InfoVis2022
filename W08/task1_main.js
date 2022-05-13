@@ -67,13 +67,11 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        const xmin = d3.min(self.data, d => d.x);
-        const xmax = d3.max(self.data, d => d.x);
+        const xmin = d3.min(self.data, d => d.value);
+        const xmax = d3.max(self.data, d => d.value);
         self.xscale.domain([xmin, xmax]);
 
-        const ymin = d3.min(self.data, d => d.y);
-        const ymax = d3.max(self.data, d => d.y);
-        self.yscale.domain([ymin, ymax]);
+        self.yscale.domain(self.data.map(d => d.label));
 
         self.render();
     }
