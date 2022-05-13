@@ -7,7 +7,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             parent: '#drawing_region',
             width: 256,
             height: 256,
-            margin: { top: 10, right: 10, bottom: 20, left: 80 },
+            margin: { top: 10, right: 10, bottom: 20, left: 140 },
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
@@ -47,7 +47,7 @@ class ScatterPlot {
 
         self.yscale = d3.scaleBand()
             .domain(self.data.map(d => d.label))
-            .range([0, self.inner_height])
+            .range([0, self.inner_height+10])
             .paddingInner(0.1);
 
         // Initialize axes
@@ -68,7 +68,7 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        const xmin = d3.min(self.data, d => d.value);
+        const xmin = 0;
         const xmax = d3.max(self.data, d => d.value);
         self.xscale.domain([xmin, xmax]);
 
