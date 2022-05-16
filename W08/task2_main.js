@@ -107,8 +107,8 @@ class ScatterPlot {
         if(xmin>xmax) larger=xmin;
         else larger=xmax;
 
-        self.xscale.domain( [xmin, larger+20] );
-        self.yscale.domain( [ymin, larger+20] );
+        self.xscale.domain( [xmin, xmax] );
+        self.yscale.domain( [ymin, ymax] );
         self.render();
     }
 
