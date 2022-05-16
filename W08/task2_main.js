@@ -33,36 +33,36 @@ class ScatterPlot {
             .attr('width', self.config.width)
             .attr('height', self.config.height);
 
-        self.chart = self.svg.append('g')
-            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
-        self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
-        self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
-        console.log(self.inner_width + "," + self.inner_height);
+        // self.chart = self.svg.append('g')
+        //     .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
+        // self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
+        // self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
+        // console.log(self.inner_width + "," + self.inner_height);
 
         self.line = d3.line()
-            .x( d => self.data.x )
-            .y( d => self.data.y );
+            .x( d => d.x )
+            .y( d => d.y );
             
-        // Initialize axis scales
-        self.xscale = d3.scaleLinear()
-            .range([0, self.inner_width]);
+        // // Initialize axis scales
+        // self.xscale = d3.scaleLinear()
+        //     .range([0, self.inner_width]);
 
-        self.yscale = d3.scaleLinear()
-            .range( [self.inner_height, 0] );
+        // self.yscale = d3.scaleLinear()
+        //     .range( [self.inner_height, 0] );
 
-        // Initialize axes
-        self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(10)
+        // // Initialize axes
+        // self.xaxis = d3.axisBottom(self.xscale)
+        //     .ticks(10)
 
-        self.yaxis = d3.axisLeft(self.yscale)
-            .ticks(10);
+        // self.yaxis = d3.axisLeft(self.yscale)
+        //     .ticks(10);
 
-        // Draw the axis
-        self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
+        // // Draw the axis
+        // self.xaxis_group = self.chart.append('g')
+        //     .attr('transform', `translate(0, ${self.inner_height})`);
 
-        self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`);
+        // self.yaxis_group = self.chart.append('g')
+        //     .attr('transform', `translate(0, 0)`);
 
         // self.chart
         //     .append("text")
@@ -85,20 +85,20 @@ class ScatterPlot {
     update() {
         let self = this;
 
-        const xmin = 0;
-        const xmax = d3.max( self.data, d => d.x );
-        //self.xscale.domain( [xmin, xmax+20] );
+        // const xmin = 0;
+        // const xmax = d3.max( self.data, d => d.x );
+        // //self.xscale.domain( [xmin, xmax+20] );
 
-        const ymin = 0;
-        const ymax = d3.max( self.data, d => d.y );
-        //self.yscale.domain( [ymin, ymax+20] );
+        // const ymin = 0;
+        // const ymax = d3.max( self.data, d => d.y );
+        // //self.yscale.domain( [ymin, ymax+20] );
 
-        var larger=0;
-        if(xmin>xmax) larger=xmin;
-        else larger=xmax;
+        // var larger=0;
+        // if(xmin>xmax) larger=xmin;
+        // else larger=xmax;
 
-        self.xscale.domain( [xmin, larger+20] );
-        self.yscale.domain( [ymin, larger+20] );
+        // self.xscale.domain( [xmin, larger+20] );
+        // self.yscale.domain( [ymin, larger+20] );
         self.render();
     }
 
