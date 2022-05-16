@@ -4,11 +4,11 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok11");
+        console.log("ok12");
         var config = {
             parent: '#drawing_region',
             width: 300,
-            height: 500,
+            height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120 }
         };
         const pie_plot = new PiePlot(config, data);
@@ -122,7 +122,7 @@ class PiePlot {
             .attr("dy", "5px")
             .attr("font", "10px")
             .attr("text-anchor", "middle")
-            .text(function (d) { return d.data.label; });
+            .text(function (d) { return self.data.label; });
         // self.xaxis_group
         //     .call(self.xaxis);
 
