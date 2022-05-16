@@ -103,7 +103,7 @@ class ScatterPlot {
         //self.yscale.domain( [ymin, ymax+20] );
 
         var larger=0;
-        if(xmin>xmax) larger=xmin;
+        if(ymax>xmax) larger=ymax;
         else larger=xmax;
         console.log("larger="+larger);
 
