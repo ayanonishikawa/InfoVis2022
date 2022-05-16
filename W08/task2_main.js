@@ -103,11 +103,11 @@ class LinePlot {
         //self.yscale.domain( [ymin, ymax+20] );
 
         // var larger=0;
-        // if(xmin>xmax) larger=xmin;
+        // if(ymax>xmax) larger=ymax;
         // else larger=xmax;
 
-        self.xscale.domain( [xmin, xmax] );
-        self.yscale.domain( [ymin, ymax] );
+        self.xscale.domain( [0, larger] );
+        self.yscale.domain( [0, larger] );
         self.render();
     }
 
