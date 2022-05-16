@@ -9,8 +9,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             parent: '#drawing_region',
             width: 300,
             height: 300,
-            margin: { top: 50, right: 10, bottom: 70, left: 120 },
-            radius: Math.min( width, height ) / 2
+            margin: { top: 50, right: 10, bottom: 70, left: 120 }
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
@@ -25,10 +24,10 @@ class ScatterPlot {
             parent: config.parent,
             width: config.width || 256,
             height: config.height || 256,
-            margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 },
-            radius: config.radius|| 150
+            margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.data = data;
+        this.radius=Math.min( config.width, config.height ) / 2
         this.init();
     }
 
@@ -49,7 +48,7 @@ class ScatterPlot {
 
         self.arc = d3.arc()
             .innerRadius(0)
-            .outerRadius(self.config.radius);
+            .outerRadius(self.radius);
 
         // // Initialize axis scales
         // self.xscale = d3.scaleLinear()
