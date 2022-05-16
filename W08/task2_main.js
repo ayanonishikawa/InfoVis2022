@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W08/task2_data.csv")
     .then(data => {
         data.forEach(d => { d.x = d.x; d.y = +d.y;});
-        console.log("ok4");
+        console.log("ok5");
         var config = {
             parent: '#drawing_region',
             width: 300,
@@ -40,8 +40,8 @@ class ScatterPlot {
         // console.log(self.inner_width + "," + self.inner_height);
 
         self.line = d3.line()
-            .x( d => d.x )
-            .y( d => d.y );
+            .x( d => self.data.x )
+            .y( d => self.data.y );
             
         // // Initialize axis scales
         // self.xscale = d3.scaleLinear()
