@@ -50,7 +50,7 @@ class ScatterPlot {
 
         // Initialize axes
         self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(5)
+            .ticks(10)
             .tickSizeOuter(0);
 
         self.yaxis = d3.axisLeft(self.yscale)
@@ -65,7 +65,7 @@ class ScatterPlot {
         self.chart
             .append("text")
             .attr("x", self.config.margin.left)
-            .attr("y", -10)
+            .attr("y", -20)
             .attr("text-anchor", "middle")
             .text("Vitamin C content of vegetables")
             .attr("font-size","12pt")
