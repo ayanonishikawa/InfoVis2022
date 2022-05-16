@@ -121,6 +121,14 @@ class ScatterPlot {
             .attr('stroke', 'black')
             .attr('fill', 'none');
 
+        self.chart.selectAll("circle")
+            .data(self.data)
+            .enter()
+            .append("circle")
+            .attr("cx", d => self.xscale( d.x ) )
+            .attr("cy", d => self.yscale( d.y ) )
+            .attr("r", 5);
+
         self.xaxis_group
             .call(self.xaxis);
 
