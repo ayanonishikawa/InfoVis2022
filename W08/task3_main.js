@@ -27,7 +27,7 @@ class ScatterPlot {
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.data = data;
-        this.radius=Math.min( config.width, config.height ) / 3
+        this.radius = Math.min(config.width, config.height) / 3
         this.init();
     }
 
@@ -115,7 +115,14 @@ class ScatterPlot {
             .attr('d', self.arc)
             .attr('fill', 'black')
             .attr('stroke', 'white')
-            .style('stroke-width', '2px');
+            .style('stroke-width', '2px')
+            .append("text")
+            .attr("fill", "black")
+            .attr("transform", function (d) { return "translate(" + self.arc.centroid(d) + ")"; })
+            .attr("dy", "5px")
+            .attr("font", "10px")
+            .attr("text-anchor", "middle")
+            .text(function (d) { return d.data.label; });
         // self.xaxis_group
         //     .call(self.xaxis);
 
