@@ -7,7 +7,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             parent: '#drawing_region',
             width: 300,
             height: 300,
-            margin: { top: 10, right: 10, bottom: 20, left: 140 },
+            margin: { top: 50, right: 10, bottom: 40, left: 140 },
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
@@ -62,22 +62,22 @@ class ScatterPlot {
 
         self.yaxis_group = self.chart.append('g');
 
-        // self.chart
-        //     .append("text")
-        //     .attr("x", self.inner_width/2)
-        //     .attr("y", 0)
-        //     .attr("text-anchor", "middle")
-        //     .text("Vitamin C content of vegetables")
-        //     .attr("font-size","15pt")
-        //     .attr("font-weight", "bold")
+        self.chart
+            .append("text")
+            .attr("x", self.inner_width/2)
+            .attr("y", 0)
+            .attr("text-anchor", "middle")
+            .text("Vitamin C content of vegetables")
+            .attr("font-size","15pt")
+            .attr("font-weight", "bold")
 
-        // self.chart
-        //     .append("text")
-        //     .attr("x", self.inner_width/2)
-        //     .attr("y", self.inner_height+self.config.margin.bottom/2)
-        //     .attr("text-anchor", "middle")
-        //     .attr("font-size","10pt")
-        //     .text("Vitamine C mg/100g");
+        self.chart
+            .append("text")
+            .attr("x", self.inner_width/2)
+            .attr("y", self.inner_height+self.config.margin.bottom/2)
+            .attr("text-anchor", "middle")
+            .attr("font-size","10pt")
+            .text("Vitamine C mg/100g");
     }
 
     update() {
