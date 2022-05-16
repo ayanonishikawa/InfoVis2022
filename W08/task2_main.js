@@ -1,6 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W08/task2_data.csv")
     .then(data => {
-        data.forEach(d => { d.x = d.x; d.y = +d.y;});
+        data.forEach(d => { d.x = d.x; d.y = +d.y;
+            console.log(d.label+","+d.value)});
         console.log("ok8");
         var config = {
             parent: '#drawing_region',
@@ -107,8 +108,8 @@ class ScatterPlot {
         else larger=xmax;
         console.log("larger="+larger);
 
-        self.xscale.domain( [xmin, larger+20] );
-        self.yscale.domain( [ymin, larger+20] );
+        self.xscale.domain( [xmin, xmax] );
+        self.yscale.domain( [ymin, ymax] );
         self.render();
     }
 
