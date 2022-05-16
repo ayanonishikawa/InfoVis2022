@@ -27,7 +27,7 @@ class ScatterPlot {
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.data = data;
-        this.radius=Math.min( config.width, config.height ) / 2
+        this.radius=Math.min( config.width, config.height ) / 3
         this.init();
     }
 
