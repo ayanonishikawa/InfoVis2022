@@ -65,31 +65,31 @@ class ScatterPlot {
         self.yaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, 0)`);
 
-        self.chart
-            .append("text")
-            .attr("x", self.inner_width/2)
-            .attr("y", 0)
-            .attr("text-anchor", "middle")
-            .text("Chart Title")
-            .attr("font-size","15pt")
-            .attr("font-weight", "bold")
+        // self.chart
+        //     .append("text")
+        //     .attr("x", self.inner_width/2)
+        //     .attr("y", 0)
+        //     .attr("text-anchor", "middle")
+        //     .text("Chart Title")
+        //     .attr("font-size","15pt")
+        //     .attr("font-weight", "bold")
 
-        self.chart
-            .append("text")
-            .attr("x", self.inner_width/2)
-            .attr("y", self.inner_height+self.config.margin.bottom/2)
-            .attr("text-anchor", "middle")
-            .attr("font-size","10pt")
-            .text("X_label");
+        // self.chart
+        //     .append("text")
+        //     .attr("x", self.inner_width/2)
+        //     .attr("y", self.inner_height+self.config.margin.bottom/2)
+        //     .attr("text-anchor", "middle")
+        //     .attr("font-size","10pt")
+        //     .text("X_label");
         
-        self.chart
-            .append("text")
-            .attr("x", -self.inner_height/2)
-            .attr("y", -50)
-            .attr("transform", "rotate(-90)")
-            .attr("text-anchor", "middle")
-            .attr("font-size","10pt")
-            .text("Y_label");
+        // self.chart
+        //     .append("text")
+        //     .attr("x", -self.inner_height/2)
+        //     .attr("y", -50)
+        //     .attr("transform", "rotate(-90)")
+        //     .attr("text-anchor", "middle")
+        //     .attr("font-size","10pt")
+        //     .text("Y_label");
     }
 
     update() {
