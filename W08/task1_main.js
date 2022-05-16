@@ -64,7 +64,7 @@ class ScatterPlot {
 
         self.chart
             .append("text")
-            .attr("x", self.margin.left)
+            .attr("x", self.config.margin.left)
             .attr("y", 0)
             .attr("text-anchor", "middle")
             .text("Vitamin C content of vegetables")
