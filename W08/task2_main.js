@@ -1,7 +1,6 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then(data => {
-        data.forEach(d => { d.x = d.x; d.y = +d.y;
-            console.log(d.x+","+d.y)});
+        data.forEach( d => { d.x = +d.x; d.y = +d.y; });
         console.log("ok8");
         var config = {
             parent: '#drawing_region',
@@ -127,7 +126,7 @@ class LinePlot {
             .append("circle")
             .attr("cx", d => self.xscale( d.x ) )
             .attr("cy", d => self.yscale( d.y ) )
-            .attr("r", 5);
+            .attr("r", d => d.r);
 
         self.xaxis_group
             .call(self.xaxis);
