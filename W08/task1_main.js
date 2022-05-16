@@ -104,7 +104,7 @@ class ScatterPlot {
             .append("rect")
             .attr("x", 0)
             .attr("y", d => self.yscale(d.label))
-            .attr("width", d => self.xscale(d.value*1.5))
+            .attr("width", d => self.xscale(d.value))
             .attr("height", self.yscale.bandwidth());
 
         self.xaxis_group
