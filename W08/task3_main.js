@@ -109,7 +109,7 @@ class ScatterPlot {
 
         // Draw bars
         self.chart.selectAll('pie')
-            .data(pie(self.data))
+            .data(self.pie(self.data))
             .enter()
             .append('path')
             .attr('d', self.arc)
