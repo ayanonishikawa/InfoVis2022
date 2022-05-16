@@ -4,7 +4,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok10");
+        console.log("ok11");
         var config = {
             parent: '#drawing_region',
             width: 300,
@@ -38,7 +38,7 @@ class PiePlot {
             .attr('height', self.config.height);
 
         self.chart = self.svg.append('g')
-            .attr('transform', `translate(${width / 2}, ${height / 2})`);
+            .attr('transform', `translate(${self.config.width / 2}, ${self.config.height / 2})`);
         // self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         // self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         // console.log(self.inner_width + "," + self.inner_height);
