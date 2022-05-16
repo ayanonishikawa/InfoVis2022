@@ -103,9 +103,9 @@ class ScatterPlot {
         const ymax = d3.max( self.data, d => d.y );
         //self.yscale.domain( [ymin, ymax+20] );
 
-        var larger=0;
-        if(xmin>xmax) larger=xmin;
-        else larger=xmax;
+        // var larger=0;
+        // if(xmin>xmax) larger=xmin;
+        // else larger=xmax;
 
         self.xscale.domain( [xmin, xmax] );
         self.yscale.domain( [ymin, ymax] );
@@ -116,10 +116,10 @@ class ScatterPlot {
         let self = this;
 
         // Draw bars
-        self.chart.append("path")
-            .attr('d', self.line(self.data))
-            .attr('stroke', 'black')
-            .attr('fill', 'none');
+        // self.chart.append("path")
+        //     .attr('d', self.line(self.data))
+        //     .attr('stroke', 'black')
+        //     .attr('fill', 'none');
 
         self.chart.selectAll("circle")
             .data(self.data)
