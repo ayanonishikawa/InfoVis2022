@@ -5,7 +5,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
         console.log("ok6");
         var config = {
             parent: '#drawing_region',
-            width: 300,
+            width: 400,
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 140 },
         };
