@@ -9,14 +9,14 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120},
         };
-        const scatter_plot = new ScatterPlot(config, data);
-        scatter_plot.update();
+        const bar_plot = new BarPlot(config, data);
+        bar_plot.update();
     })
     .catch(error => {
         console.log(error);
     });
 
-class ScatterPlot {
+class BarPlot {
     constructor(config, data) {
         this.config = {
             parent: config.parent,

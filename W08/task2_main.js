@@ -9,14 +9,14 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W08/task2_data.csv")
             height: 400,
             margin: {top:100, right:50, bottom:50, left:100},
         };
-        const scatter_plot = new ScatterPlot(config, data);
-        scatter_plot.update();
+        const line_plot = new LinePlot(config, data);
+        line_plot.update();
     })
     .catch(error => {
         console.log(error);
     });
 
-class ScatterPlot {
+class LinePlot {
     constructor(config, data) {
         this.config = {
             parent: config.parent,
