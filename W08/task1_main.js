@@ -7,7 +7,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             parent: '#drawing_region',
             width: 300,
             height: 300,
-            margin: { top: 50, right: 10, bottom: 60, left: 140 },
+            margin: { top: 50, right: 10, bottom: 70, left: 140 },
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
@@ -65,18 +65,19 @@ class ScatterPlot {
         self.chart
             .append("text")
             .attr("x", self.config.margin.left)
-            .attr("y", 0)
+            .attr("y", -10)
             .attr("text-anchor", "middle")
             .text("Vitamin C content of vegetables")
             .attr("font-size","12pt")
             .attr("font-weight", "bold")
+            .style("textDecoration","underline");
 
         self.chart
             .append("text")
             .attr("x", self.inner_width/2)
             .attr("y", self.inner_height+self.config.margin.bottom/2)
             .attr("text-anchor", "middle")
-            .attr("font-size","10pt")
+            .attr("font-size","8pt")
             .text("Vitamine C mg/100g");
     }
 

@@ -107,7 +107,7 @@ class ScatterPlot {
 
         // Draw bars
         self.svg.append("path")
-            .attr('d', line(self.data))
+            .attr('d', self.line(self.data))
             .attr('stroke', 'black')
             .attr('fill', 'none');
 
