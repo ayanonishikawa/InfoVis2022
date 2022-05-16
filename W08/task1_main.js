@@ -5,7 +5,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
         console.log("ok6");
         var config = {
             parent: '#drawing_region',
-            width: 400,
+            width: 500,
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 140 },
         };
@@ -78,6 +78,7 @@ class ScatterPlot {
             .attr("y", self.inner_height+self.config.margin.bottom/2)
             .attr("text-anchor", "middle")
             .attr("font-size","8pt")
+            .attr("font-weight", "bold")
             .text("Vitamine C mg/100g");
     }
 
