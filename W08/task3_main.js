@@ -128,7 +128,7 @@ class PiePlot {
             .attr("dy", "5px")
             .attr("font", "10px")
             .attr("text-anchor", "middle")
-            .text(function (d) { return d.data.label; });
+            .text(function (d) { console.log("label="+d.data.label); return d.data.label; });
         // self.xaxis_group
         //     .call(self.xaxis);
 
