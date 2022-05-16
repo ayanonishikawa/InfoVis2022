@@ -102,9 +102,9 @@ class LinePlot {
         const ymax = d3.max( self.data, d => d.y );
         //self.yscale.domain( [ymin, ymax+20] );
 
-        // var larger=0;
-        // if(ymax>xmax) larger=ymax;
-        // else larger=xmax;
+        var larger=0;
+        if(ymax>xmax) larger=ymax;
+        else larger=xmax;
 
         self.xscale.domain( [0, larger] );
         self.yscale.domain( [0, larger] );
