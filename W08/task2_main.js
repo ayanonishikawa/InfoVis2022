@@ -124,8 +124,8 @@ class LinePlot {
             .data(self.data)
             .enter()
             .append("circle")
-            .attr("cx", d => self.xscale( d.x ) )
-            .attr("cy", d => self.yscale( d.y ) )
+            .attr("cx", self.line.x())
+            .attr("cy", self.line.y() )
             .attr("r", d => d.r);
 
         self.xaxis_group
