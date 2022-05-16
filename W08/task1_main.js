@@ -1,11 +1,11 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         data.forEach(d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok");
+        console.log("ok2");
         var config = {
             parent: '#drawing_region',
             width: 256,
-            height: 256,
+            height: 230,
             margin: { top: 10, right: 10, bottom: 40, left: 40 },
         };
         const scatter_plot = new ScatterPlot(config, data);
@@ -67,16 +67,12 @@ class ScatterPlot {
         const xmax = d3.max(self.data, d => d.x);
         //self.xscale.domain( [xmin, xmax+20] );
 
-        const ymin = 0;
-        const ymax = d3.max(self.data, d => d.y);
-        //self.yscale.domain( [ymin, ymax+20] );
-
         var larger = 0;
         if (xmin > xmax) larger = xmin;
         else larger = xmax;
 
         self.xscale.domain([xmin, larger + 20]);
-        self.yscale.domain([ymin, larger + 20]);
+        self.yscale.domain(data.map(d => d.label));
 
         self.render();
     }
