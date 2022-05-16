@@ -61,6 +61,23 @@ class ScatterPlot {
             .attr('transform', `translate(0, ${self.inner_height+10})`);
 
         self.yaxis_group = self.chart.append('g');
+
+        self.chart
+            .append("text")
+            .attr("x", self.inner_width/2)
+            .attr("y", 0)
+            .attr("text-anchor", "middle")
+            .text("Vitamin C content of vegetables")
+            .attr("font-size","15pt")
+            .attr("font-weight", "bold")
+
+        self.chart
+            .append("text")
+            .attr("x", self.inner_width/2)
+            .attr("y", self.inner_height+self.config.margin.bottom/2)
+            .attr("text-anchor", "middle")
+            .attr("font-size","10pt")
+            .text("Vitamine C mg/100g");
     }
 
     update() {
