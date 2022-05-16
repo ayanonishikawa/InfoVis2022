@@ -1,12 +1,13 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
-        data.forEach(d => { d.x = +d.x; d.y = +d.y; });
+        data.forEach(d => { d.label = d.name; d.value = +d.amount; 
+        console.log(d.label+","+d.value)});
         console.log("ok2");
         var config = {
             parent: '#drawing_region',
-            width: 256,
-            height: 230,
-            margin: { top: 10, right: 10, bottom: 40, left: 40 },
+            width: 300,
+            height: 300,
+            margin: { top: 10, right: 10, bottom: 20, left: 140 },
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
@@ -39,40 +40,39 @@ class ScatterPlot {
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
 
+        // Initialize axis scales
         self.xscale = d3.scaleLinear()
+            .domain([0, d3.max(self.data, d => d.value)])
             .range([0, self.inner_width]);
 
-        self.yscale = d3.scaleLinear()
-            .range([self.inner_height, 0]);
+        self.yscale = d3.scaleBand()
+            .domain(self.data.map(d => d.label))
+            .range([0, self.inner_height+10])
+            .paddingInner(0.1);
 
+        // Initialize axes
         self.xaxis = d3.axisBottom(self.xscale)
-            .ticks(10)
-            .tickPadding(2);
+            .ticks(5)
+            .tickSizeOuter(0);
 
         self.yaxis = d3.axisLeft(self.yscale)
-            .ticks(10)
-            .tickPadding(2);
+            .tickSizeOuter(0);
 
+        // Draw the axis
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height})`);
+            .attr('transform', `translate(0, ${self.inner_height+10})`);
 
-        self.yaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, 0)`);
+        self.yaxis_group = self.chart.append('g');
     }
 
     update() {
         let self = this;
 
         const xmin = 0;
-        const xmax = d3.max(self.data, d => d.x);
-        //self.xscale.domain( [xmin, xmax+20] );
+        const xmax = d3.max(self.data, d => d.value);
+        self.xscale.domain([xmin, xmax]);
 
-        var larger = 0;
-        if (xmin > xmax) larger = xmin;
-        else larger = xmax;
-
-        self.xscale.domain([xmin, larger + 20]);
-        self.yscale.domain(data.map(d => d.label));
+        self.yscale.domain(self.data.map(d => d.label));
 
         self.render();
     }
@@ -80,13 +80,15 @@ class ScatterPlot {
     render() {
         let self = this;
 
-        self.chart.selectAll("circle")
+        // Draw bars
+        self.chart.selectAll("rect")
             .data(self.data)
             .enter()
-            .append("circle")
-            .attr("cx", d => self.xscale(d.x))
-            .attr("cy", d => self.yscale(d.y))
-            .attr("r", d => d.r);
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", d => self.yscale(d.label))
+            .attr("width", d => self.xscale(d.value))
+            .attr("height", self.yscale.bandwidth());
 
         self.xaxis_group
             .call(self.xaxis);
