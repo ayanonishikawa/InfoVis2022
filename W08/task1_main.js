@@ -2,7 +2,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         data.forEach(d => { d.label = d.name; d.value = +d.amount; 
         console.log(d.label+","+d.value)});
-        console.log("ok3");
+        console.log("ok4");
         var config = {
             parent: '#drawing_region',
             width: 300,
@@ -45,7 +45,7 @@ class ScatterPlot {
             .range([0, self.inner_width]);
 
         self.yscale = d3.scaleBand()
-            .range([0, self.inner_height+10])
+            .range([0, self.inner_height])
             .paddingInner(0.1);
 
         // Initialize axes
@@ -58,26 +58,26 @@ class ScatterPlot {
 
         // Draw the axis
         self.xaxis_group = self.chart.append('g')
-            .attr('transform', `translate(0, ${self.inner_height+10})`);
+            .attr('transform', `translate(0, ${self.inner_height})`);
 
         self.yaxis_group = self.chart.append('g');
 
-        self.chart
-            .append("text")
-            .attr("x", self.inner_width/2)
-            .attr("y", 0)
-            .attr("text-anchor", "middle")
-            .text("Vitamin C content of vegetables")
-            .attr("font-size","15pt")
-            .attr("font-weight", "bold")
+        // self.chart
+        //     .append("text")
+        //     .attr("x", self.inner_width/2)
+        //     .attr("y", 0)
+        //     .attr("text-anchor", "middle")
+        //     .text("Vitamin C content of vegetables")
+        //     .attr("font-size","15pt")
+        //     .attr("font-weight", "bold")
 
-        self.chart
-            .append("text")
-            .attr("x", self.inner_width/2)
-            .attr("y", self.inner_height+self.config.margin.bottom/2)
-            .attr("text-anchor", "middle")
-            .attr("font-size","10pt")
-            .text("Vitamine C mg/100g");
+        // self.chart
+        //     .append("text")
+        //     .attr("x", self.inner_width/2)
+        //     .attr("y", self.inner_height+self.config.margin.bottom/2)
+        //     .attr("text-anchor", "middle")
+        //     .attr("font-size","10pt")
+        //     .text("Vitamine C mg/100g");
     }
 
     update() {
