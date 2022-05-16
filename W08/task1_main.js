@@ -2,7 +2,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         data.forEach(d => { d.label = d.name; d.value = +d.amount; 
         console.log(d.label+","+d.value)});
-        console.log("ok2");
+        console.log("ok3");
         var config = {
             parent: '#drawing_region',
             width: 300,
@@ -42,11 +42,9 @@ class ScatterPlot {
 
         // Initialize axis scales
         self.xscale = d3.scaleLinear()
-            .domain([0, d3.max(self.data, d => d.value)])
             .range([0, self.inner_width]);
 
         self.yscale = d3.scaleBand()
-            .domain(self.data.map(d => d.label))
             .range([0, self.inner_height+10])
             .paddingInner(0.1);
 
