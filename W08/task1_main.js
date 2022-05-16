@@ -7,7 +7,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             parent: '#drawing_region',
             width: 500,
             height: 300,
-            margin: { top: 50, right: 10, bottom: 70, left: 140 },
+            margin: { top: 50, right: 10, bottom: 70, left: 120},
         };
         const scatter_plot = new ScatterPlot(config, data);
         scatter_plot.update();
