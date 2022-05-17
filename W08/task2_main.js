@@ -126,7 +126,7 @@ class LinePlot {
             .append("circle")
             .attr("cx", self.line.x())
             .attr("cy", self.line.y() )
-            .attr("r", d => d.r)
+            .attr("r", 5)
             .attr("fill","black");
 
         self.xaxis_group
