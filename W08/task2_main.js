@@ -115,10 +115,10 @@ class LinePlot {
         let self = this;
 
         // Draw bars
-        self.chart.append("path")
-            .attr('d', self.line(self.data))
-            .attr('stroke', 'black')
-            .attr('fill', 'none');
+        // self.chart.append("path")
+        //     .attr('d', self.line(self.data))
+        //     .attr('stroke', 'black')
+        //     .attr('fill', 'none');
 
         self.chart.selectAll("circle")
             .data(self.data)
