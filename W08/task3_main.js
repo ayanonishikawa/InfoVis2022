@@ -125,10 +125,10 @@ class PiePlot {
             .data(self.pie(self.data))
             .enter()
             .append("text")
-            .attr("fill", "red")
+            .attr("fill", "white")
             .attr("transform", function (d) { return "translate(" + self.text.centroid(d) + ")"; })
             .attr("dy", "5px")
-            .attr("font", "10px")
+            .attr("font", "7px")
             .attr("text-anchor", "middle")
             .text(function (d) { console.log("label="+d.data.label); return d.data.label; });
         // self.xaxis_group
