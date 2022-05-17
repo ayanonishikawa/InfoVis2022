@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W08/task2_data.csv")
     .then(data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok13");
+        console.log("ok14");
         var config = {
             parent: '#drawing_region',
             width: 400,
@@ -38,10 +38,6 @@ class LinePlot {
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
-
-        self.line = d3.line()
-            .x( d => d.x )
-            .y( d => d.y );
             
         // Initialize axis scales
         self.xscale = d3.scaleLinear()
@@ -63,6 +59,10 @@ class LinePlot {
 
         self.yaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, 0)`);
+
+        self.line = d3.line()
+            .x( d => self.xscale(d.x) )
+            .y( d => self.yscale(d.y) );
 
         // self.chart
         //     .append("text")
@@ -115,10 +115,10 @@ class LinePlot {
         let self = this;
 
         // Draw bars
-        // self.chart.append("path")
-        //     .attr('d', self.line(self.data))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'none');
+        self.chart.append("path")
+            .attr('d', self.line(self.data))
+            .attr('stroke', 'black')
+            .attr('fill', 'none');
 
         self.chart.selectAll("circle")
             .data(self.data)
@@ -126,7 +126,8 @@ class LinePlot {
             .append("circle")
             .attr("cx", self.line.x())
             .attr("cy", self.line.y() )
-            .attr("r", d => d.r);
+            .attr("r", d => d.r)
+            .attr("fill","black");
 
         self.xaxis_group
             .call(self.xaxis);
