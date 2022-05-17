@@ -51,8 +51,8 @@ class PiePlot {
             .outerRadius(self.radius);
 
         self.text = d3.arc()
-            .outerRadius(self.radius - 60)
-            .innerRadius(self.radius - 60);
+            .outerRadius(self.radius - 30)
+            .innerRadius(self.radius - 30);
 
         // // Initialize axis scales
         // self.xscale = d3.scaleLinear()
