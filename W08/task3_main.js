@@ -7,8 +7,8 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
         console.log("8");
         var config = {
             parent: '#drawing_region',
-            width: 600,
-            height: 400,
+            width: 800,
+            height: 600,
             margin: { top: 50, right: 10, bottom: 70, left: 120 }
         };
         const pie_plot = new PiePlot(config, data);
