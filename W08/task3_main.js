@@ -123,7 +123,7 @@ class PiePlot {
 
         self.chart.selectAll('pie')
             .append("text")
-            .attr("fill", "white")
+            .attr("fill", "red")
             .attr("transform", function (d) { return "translate(" + self.text.centroid(d) + ")"; })
             .attr("dy", "5px")
             .attr("font", "10px")
