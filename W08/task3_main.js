@@ -122,6 +122,8 @@ class PiePlot {
             .style('stroke-width', '2px');
 
         self.chart.selectAll('pie')
+            .data(self.pie(self.data))
+            .enter()
             .append("text")
             .attr("fill", "red")
             .attr("transform", function (d) { return "translate(" + self.text.centroid(d) + ")"; })
