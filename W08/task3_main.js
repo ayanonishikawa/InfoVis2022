@@ -4,7 +4,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok16");
+        console.log("ok17");
         var config = {
             parent: '#drawing_region',
             width: 600,
