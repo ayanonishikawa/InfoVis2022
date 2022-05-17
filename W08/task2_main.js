@@ -124,8 +124,8 @@ class LinePlot {
             .data(self.data)
             .enter()
             .append("circle")
-            .attr("cx", self.line.x())
-            .attr("cy", self.line.y() )
+            .attr("cx", self.xscale(d.x))
+            .attr("cy", self.yscale(d.y) )
             .attr("r", d => d.r)
             .attr("fill","black");
 
