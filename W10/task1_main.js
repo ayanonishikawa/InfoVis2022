@@ -15,7 +15,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
 var width = 500;
 var height = 300;
 var margin = { top: 50, right: 10, bottom: 70, left: 120};
-console.log(data);
+console.log(data.value);
 
 var svg = d3.select('#drawing_region');
 
