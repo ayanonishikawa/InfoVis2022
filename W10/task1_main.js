@@ -6,7 +6,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             console.log(d.label + "," + d.value)
         });
         this.data=data;
-        console.log("ok8");
+        console.log("ok9");
     })
     .catch(error => {
         console.log(error);
@@ -15,6 +15,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
 var width = 500;
 var height = 300;
 var margin = { top: 50, right: 10, bottom: 70, left: 120};
+console.log(data);
 
 var svg = d3.select('#drawing_region');
 
@@ -63,6 +64,18 @@ function update(data) {
 }
 
 d3.select('#reverse')
+    .on('click', d => {
+        data.reverse();
+        update(data);
+    });
+
+d3.select('#descend')
+    .on('click', d => {
+        data.reverse();
+        update(data);
+    });
+
+d3.select('#ascend')
     .on('click', d => {
         data.reverse();
         update(data);
