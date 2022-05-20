@@ -4,11 +4,11 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok16");
+        console.log("8");
         var config = {
             parent: '#drawing_region',
-            width: 600,
-            height: 400,
+            width: 800,
+            height: 600,
             margin: { top: 50, right: 10, bottom: 70, left: 120 }
         };
         const pie_plot = new PiePlot(config, data);
@@ -51,8 +51,8 @@ class PiePlot {
             .outerRadius(self.radius);
 
         self.text = d3.arc()
-            .outerRadius(self.radius - 60)
-            .innerRadius(self.radius - 60);
+            .outerRadius(self.radius*0.6)
+            .innerRadius(self.radius*0.6);
 
         // // Initialize axis scales
         // self.xscale = d3.scaleLinear()
@@ -122,11 +122,13 @@ class PiePlot {
             .style('stroke-width', '2px');
 
         self.chart.selectAll('pie')
+            .data(self.pie(self.data))
+            .enter()
             .append("text")
             .attr("fill", "white")
             .attr("transform", function (d) { return "translate(" + self.text.centroid(d) + ")"; })
             .attr("dy", "5px")
-            .attr("font", "10px")
+            .attr("font", "7px")
             .attr("text-anchor", "middle")
             .text(function (d) { console.log("label="+d.data.label); return d.data.label; });
         // self.xaxis_group

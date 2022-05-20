@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W08/task2_data.csv")
     .then(data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; });
-        console.log("ok12");
+        console.log("ok15");
         var config = {
             parent: '#drawing_region',
             width: 400,
@@ -38,10 +38,6 @@ class LinePlot {
         self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
         self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
         console.log(self.inner_width + "," + self.inner_height);
-
-        self.line = d3.line()
-            .x( d => d.x )
-            .y( d => d.y );
             
         // Initialize axis scales
         self.xscale = d3.scaleLinear()
@@ -63,6 +59,10 @@ class LinePlot {
 
         self.yaxis_group = self.chart.append('g')
             .attr('transform', `translate(0, 0)`);
+
+        self.line = d3.line()
+            .x( d => self.xscale(d.x) )
+            .y( d => self.yscale(d.y) );
 
         // self.chart
         //     .append("text")
@@ -102,8 +102,12 @@ class LinePlot {
         const ymax = d3.max( self.data, d => d.y );
         //self.yscale.domain( [ymin, ymax+20] );
 
-        self.xscale.domain( [xmin, xmax] );
-        self.yscale.domain( [ymin, ymax] );
+        var smaller=0;
+        if(xmin<ymin) smaller=xmin;
+        else smaller=ymin
+
+        self.xscale.domain( [smaller, xmax] );
+        self.yscale.domain( [smaller, ymax] );
         self.render();
     }
 
@@ -122,7 +126,8 @@ class LinePlot {
             .append("circle")
             .attr("cx", self.line.x())
             .attr("cy", self.line.y() )
-            .attr("r", d => d.r);
+            .attr("r", 5)
+            .attr("fill","black");
 
         self.xaxis_group
             .call(self.xaxis);
