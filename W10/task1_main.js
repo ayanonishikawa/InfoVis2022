@@ -9,6 +9,8 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
         console.log(error);
     });
 
+var margin = {top:10, right:10, bottom:20, left:60};
+
 var svg = d3.select('#drawing_region');
 
 var chart = svg.append('g')
