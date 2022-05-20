@@ -1,3 +1,4 @@
+var data;
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         data.forEach(d => { d.label = d.name; d.value = +d.amount; 
