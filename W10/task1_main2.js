@@ -118,18 +118,22 @@ class BarPlot {
 }
 d3.select('#reverse')
     .on('click', d => {
-        this.data.reverse();
-
+        this.data.forEach(d => {
+            d.label = d.name; d.value = +d.amount;
+            console.log(d.label + "," + d.value);
+        });
+        // this.data.reverse();
+        bar_plot.update();
     });
 
 d3.select('#descend')
     .on('click', d => {
         this.data.reverse();
-        update(data);
+        bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
         this.data.reverse();
-        update(data);
+        bar_plot.update();
     });
