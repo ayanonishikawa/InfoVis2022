@@ -4,7 +4,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok6");
+        console.log("ok7");
         var config = {
             parent: '#drawing_region',
             width: 500,
@@ -88,10 +88,10 @@ class BarPlot {
         let self = this;
 
         const xmin = 0;
-        const xmax = d3.max(self.data, d => d.value);
+        const xmax = d3.max(self.datas, d => d.value);
         self.xscale.domain([xmin, xmax]);
 
-        self.yscale.domain(self.data.map(d => d.label));
+        self.yscale.domain(self.datas.map(d => d.label));
 
         self.render();
     }
@@ -101,7 +101,7 @@ class BarPlot {
 
         // Draw bars
         self.chart.selectAll("rect")
-            .data(self.data)
+            .data(self.datas)
             .enter()
             .append("rect")
             .attr("x", 0)
@@ -118,23 +118,21 @@ class BarPlot {
 }
 d3.select('#reverse')
     .on('click', d => {
-        this.datas.forEach(d => {
-            for(var i=0; i<datas.length; i++){
-                console.log(datas[i].label + " , " + datas[i].value);
+            for(var i=0; i<this.datas.length; i++){
+                console.log(this.datas[i].label + " , " + this.datas[i].value);
             }
-        });
         // this.data.reverse();
         bar_plot.update();
     });
 
 d3.select('#descend')
     .on('click', d => {
-        this.data.reverse();
+        this.datas.reverse();
         bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
-        this.data.reverse();
+        this.datas.reverse();
         bar_plot.update();
     });
