@@ -26,7 +26,7 @@ class BarPlot {
             height: config.height || 256,
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
-        this.data = data;
+        this.datas = data;
         this.init();
     }
 
@@ -118,9 +118,10 @@ class BarPlot {
 }
 d3.select('#reverse')
     .on('click', d => {
-        this.data.forEach(d => {
-            d.label = d.name; d.value = +d.amount;
-            console.log(d.label + "," + d.value);
+        this.datas.forEach(d => {
+            for(var i=0; i<datas.length; i++){
+                console.log(datas[i].label + " , " + datas[i].value);
+            }
         });
         // this.data.reverse();
         bar_plot.update();
