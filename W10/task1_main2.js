@@ -93,6 +93,7 @@ class BarPlot {
     update() {
         let self = this;
 
+        console.log(self.arrayData);
         const xmin = 0;
         const xmax = d3.max(self.arrayData, d => d[1]);
         self.xscale.domain([xmin, xmax]);
