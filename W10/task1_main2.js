@@ -4,7 +4,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok7");
+        console.log("ok8");
         var config = {
             parent: '#drawing_region',
             width: 500,
@@ -118,9 +118,12 @@ class BarPlot {
 }
 d3.select('#reverse')
     .on('click', d => {
-            for(var i=0; i<this.datas.length; i++){
-                console.log(this.datas[i].label + " , " + this.datas[i].value);
-            }
+            // for(var i=0; i<this.datas.length; i++){
+            //     console.log(this.datas[i].label + " , " + this.datas[i].value);
+            // }
+            this.datas.forEach(d => {
+                console.log(d.label + "," + d.value)
+            });
         // this.data.reverse();
         bar_plot.update();
     });
