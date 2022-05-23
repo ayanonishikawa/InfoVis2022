@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         var arrayData=[];
-        console.log("ok14-1");
+        console.log("ok15-1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
@@ -125,18 +125,18 @@ class BarPlot {
 
 d3.select('#reverse')
     .on('click', d => {
-        self.arrayData.reverse();
+        this.arrayData.reverse();
         bar_plot.update();
     });
 
 d3.select('#descend')
     .on('click', d => {
-        self.arrayData.sort((a, b) => b[1] - a[1]);
+        this.arrayData.sort((a, b) => b[1] - a[1]);
         bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
-        self.arrayData.sort((a, b) => a[1] - b[1]);
+        this.arrayData.sort((a, b) => a[1] - b[1]);
         bar_plot.update();
     });
