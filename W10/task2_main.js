@@ -1,3 +1,4 @@
+let circles;
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W06/w06_task1.csv")
     .then( data => {
         data.forEach( d => { d.x = +d.x; d.y = +d.y; d.r=+d.r;});
@@ -113,7 +114,7 @@ class ScatterPlot {
     render() {
         let self = this;
 
-        let circles=self.chart.selectAll("circle")
+        circles=self.chart.selectAll("circle")
             .data(self.data)
             .enter()
             .append("circle")
@@ -130,7 +131,7 @@ class ScatterPlot {
     }
 }
 
-circles
+this.circles
     .on('mouseover', (e,d) => {
         d3.select('#tooltip')
             .style('opacity', 1)

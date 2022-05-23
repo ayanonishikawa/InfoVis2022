@@ -127,17 +127,17 @@ d3.select('#reverse')
     .on('click', d => {
         console.log(this.arrayData);
         this.arrayData.reverse();
-        bar_plot.update();
+        this.bar_plot.update();
     });
 
 d3.select('#descend')
     .on('click', d => {
         this.arrayData.sort((a, b) => b[1] - a[1]);
-        bar_plot.update();
+        this.bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
         this.arrayData.sort((a, b) => a[1] - b[1]);
-        bar_plot.update();
+        this.bar_plot.update();
     });
