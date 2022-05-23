@@ -1,7 +1,6 @@
-var arrayData = [];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok2");
+        console.log("ok1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
@@ -17,7 +16,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
         };
         const initial_data=arrayData;
         const bar_plot = new BarPlot(config, data, arrayData,initial_data);
-        bar_plot.update(arrayData);
+        bar_plot.update(data);
     })
     .catch(error => {
         console.log(error);
@@ -92,21 +91,20 @@ class BarPlot {
             .text("Vitamine C mg/100g");
     }
 
-    update(array) {
+    update(data) {
         let self = this;
 
-        console.log(self.initial_data);
-
+        // console.log(array);
         const xmin = 0;
-        const xmax = d3.max(array, d => d[1]);
+        const xmax = d3.max(data, d => d[1]);
         self.xscale.domain([xmin, xmax]);
 
-        self.yscale.domain(array.map(d => d[0]));
+        self.yscale.domain(data.map(d => d[0]));
 
-        self.render(array);
+        self.render(data);
     }
 
-    render(array) {
+    render(data) {
         let self = this;
 
         // Draw bars
@@ -127,21 +125,21 @@ class BarPlot {
         d3.select('#reverse')
             .on('click', d => {
                 array.reverse();
-                console.log(self.initial_data);
-                self.update(array);
+                // console.log(array);
+                self.update(data);
             });
 
         d3.select('#descend')
             .on('click', d => {
                 array.sort((a, b) => b[1] - a[1]);
-                console.log(self.initial_data);
+                console.log(array);
                 self.update(array);
             });
 
         d3.select('#ascend')
             .on('click', d => {
                 array.sort((a, b) => a[1] - b[1]);
-                console.log(self.initial_data);
+                console.log(array);
                 self.update(array);
             });
         
