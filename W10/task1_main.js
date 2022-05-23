@@ -1,18 +1,18 @@
 var arrayData = [];
-var initial_data=[];
+// var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok8");
+        // console.log("ok8");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
         });
-        console.log("ok11");
-        for(var i=0;i<arrayData.length;i++){
-            initial_data[i]=arrayData[i].concat();
-        }
-        console.log(initial_data);
+        // console.log("ok11");
+        // for(var i=0;i<arrayData.length;i++){
+        //     initial_data[i]=arrayData[i].concat();
+        // }
+        // console.log(initial_data);
         var config = {
             parent: '#drawing_region',
             width: 500,
@@ -98,7 +98,7 @@ class BarPlot {
     update(array) {
         let self = this;
 
-        console.log(self.initial_data);
+        // console.log(self.initial_data);
 
         const xmin = 0;
         const xmax = d3.max(array, d => d[1]);
@@ -130,28 +130,28 @@ class BarPlot {
         d3.select('#reverse')
             .on('click', d => {
                 array.reverse();
-                console.log(self.initial_data);
+                // console.log(self.initial_data);
                 self.update(array);
             });
 
         d3.select('#descend')
             .on('click', d => {
                 array.sort((a, b) => b[1] - a[1]);
-                console.log(self.initial_data);
+                // console.log(self.initial_data);
                 self.update(array);
             });
 
         d3.select('#ascend')
             .on('click', d => {
                 array.sort((a, b) => a[1] - b[1]);
-                console.log(self.initial_data);
+                // console.log(self.initial_data);
                 self.update(array);
             });
         
-        d3.select('#initialize')
-            .on('click', d => {
-                console.log(self.initial_data);
-                self.update(self.initial_data);
-            });
+        // d3.select('#initialize')
+        //     .on('click', d => {
+        //         console.log(self.initial_data);
+        //         self.update(self.initial_data);
+        //     });
     }
 }
