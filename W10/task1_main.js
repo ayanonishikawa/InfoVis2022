@@ -1,11 +1,13 @@
 var arrayData = [];
+var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok3");
+        console.log("ok4");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
+            initial_data.push([d.label, d.value]);
         });
         console.log("ok11");
         console.log(arrayData);
@@ -15,7 +17,6 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120 },
         };
-        const initial_data=arrayData.concat();
         const bar_plot = new BarPlot(config, data, arrayData,initial_data);
         bar_plot.update(arrayData);
     })
