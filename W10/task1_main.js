@@ -2,16 +2,16 @@ var arrayData = [];
 var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok5");
+        console.log("ok6");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
-            for(var i;i<arrayData.length;i++){
-                initial_data[i]=arrayData[i].slice;
-            }
         });
         console.log("ok11");
+        for(var i;i<arrayData.length;i++){
+            initial_data[i]=arrayData[i].slice;
+        }
         console.log(initial_data);
         var config = {
             parent: '#drawing_region',
