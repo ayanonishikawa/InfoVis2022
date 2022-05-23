@@ -109,8 +109,7 @@ class BarPlot {
         // Draw bars
         self.chart.selectAll("rect")
             .data(self.arrayData)
-            .enter()
-            .append("rect")
+            .join("rect")
             .attr("x", 0)
             .attr("y", d => self.yscale(d[0]))
             .attr("width", d => self.xscale(d[1]))
