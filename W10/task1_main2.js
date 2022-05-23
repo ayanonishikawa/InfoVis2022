@@ -1,7 +1,7 @@
 var arrayData = [];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
-        console.log("ok18-1");
+        console.log("ok19-1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
