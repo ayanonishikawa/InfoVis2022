@@ -16,7 +16,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             margin: { top: 50, right: 10, bottom: 70, left: 120 },
         };
         const bar_plot = new BarPlot(config, data, arrayData);
-        bar_plot.update();
+        bar_plot.update(arrayData);
     })
     .catch(error => {
         console.log(error);
@@ -90,25 +90,25 @@ class BarPlot {
             .text("Vitamine C mg/100g");
     }
 
-    update() {
+    update(array) {
         let self = this;
 
-        console.log(self.arrayData);
+        console.log(array);
         const xmin = 0;
-        const xmax = d3.max(self.arrayData, d => d[1]);
+        const xmax = d3.max(array, d => d[1]);
         self.xscale.domain([xmin, xmax]);
 
-        self.yscale.domain(self.arrayData.map(d => d[0]));
+        self.yscale.domain(array.map(d => d[0]));
 
-        self.render();
+        self.render(array);
     }
 
-    render() {
+    render(array) {
         let self = this;
 
         // Draw bars
         self.chart.selectAll("rect")
-            .data(self.arrayData)
+            .data(array)
             .join("rect")
             .attr("x", 0)
             .attr("y", d => self.yscale(d[0]))
@@ -123,23 +123,23 @@ class BarPlot {
 
         d3.select('#reverse')
             .on('click', d => {
-                self.arrayData.reverse();
-                console.log(self.arrayData);
-                self.update();
+                array.reverse();
+                console.log(array);
+                self.update(array);
             });
 
         d3.select('#descend')
             .on('click', d => {
-                self.arrayData.sort((a, b) => b[1] - a[1]);
-                console.log(self.arrayData);
-                self.update();
+                array.sort((a, b) => b[1] - a[1]);
+                console.log(array);
+                self.update(array);
             });
 
         d3.select('#ascend')
             .on('click', d => {
-                self.arrayData.sort((a, b) => a[1] - b[1]);
-                console.log(self.arrayData);
-                self.update();
+                array.sort((a, b) => a[1] - b[1]);
+                console.log(array);
+                self.update(array);
             });
     }
 }
