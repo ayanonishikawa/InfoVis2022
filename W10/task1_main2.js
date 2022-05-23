@@ -1,11 +1,11 @@
-var arrayData=[];
+var arrayData = [];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
-        console.log("ok17-1");
+        console.log("ok18-1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
-            arrayData.push([d.label,d.value]);
+            arrayData.push([d.label, d.value]);
         });
         console.log("ok11");
         console.log(arrayData);
@@ -31,8 +31,8 @@ class BarPlot {
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.data = data;
-        this.arrayData=arrayData;
-        console.log(typeof(this.arrayData));
+        this.arrayData = arrayData;
+        console.log(typeof (this.arrayData));
         this.init();
     }
 
@@ -120,24 +120,24 @@ class BarPlot {
 
         self.yaxis_group
             .call(self.yaxis);
+
+        d3.select('#reverse')
+            .on('click', d => {
+                console.log(self.arrayData);
+                self.arrayData.reverse();
+                self.update();
+            });
+
+        d3.select('#descend')
+            .on('click', d => {
+                self.arrayData.sort((a, b) => b[1] - a[1]);
+                self.update();
+            });
+
+        d3.select('#ascend')
+            .on('click', d => {
+                self.arrayData.sort((a, b) => a[1] - b[1]);
+                self.update();
+            });
     }
 }
-
-d3.select('#reverse')
-    .on('click', d => {
-        console.log(this.arrayData);
-        this.arrayData.reverse();
-        this.bar_plot.update();
-    });
-
-d3.select('#descend')
-    .on('click', d => {
-        this.arrayData.sort((a, b) => b[1] - a[1]);
-        this.bar_plot.update();
-    });
-
-d3.select('#ascend')
-    .on('click', d => {
-        this.arrayData.sort((a, b) => a[1] - b[1]);
-        this.bar_plot.update();
-    });
