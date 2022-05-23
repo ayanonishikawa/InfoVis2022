@@ -7,7 +7,6 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
-            initial_data.push([d.label, d.value]);
             for(var i;i<arrayData.length;i++){
                 initial_data[i]=arrayData[i].slice;
             }
