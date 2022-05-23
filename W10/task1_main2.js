@@ -4,7 +4,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value)
         });
-        console.log("ok8");
+        console.log("ok9");
         var config = {
             parent: '#drawing_region',
             width: 500,
@@ -27,6 +27,7 @@ class BarPlot {
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.datas = data;
+        console.log(typeof(this.datas));
         this.init();
     }
 
