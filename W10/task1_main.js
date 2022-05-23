@@ -146,9 +146,8 @@ class BarPlot {
         
         d3.select('#initialize')
             .on('click', d => {
-                array=self.initial_data;
-                console.log(array);
-                self.update(array);
+                console.log(self.initial_data);
+                self.update(self.initial_data);
             });
     }
 }
