@@ -15,7 +15,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120 },
         };
-        var initial_data=arrayData;
+        const initial_data=arrayData;
         const bar_plot = new BarPlot(config, data, arrayData,initial_data);
         bar_plot.update(arrayData);
     })
