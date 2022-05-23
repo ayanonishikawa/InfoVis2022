@@ -1,7 +1,7 @@
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     .then(data => {
         var arrayData=[];
-        console.log("ok13-1");
+        console.log("ok14-1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
@@ -15,7 +15,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120 },
         };
-        const bar_plot = new BarPlot(config, data);
+        const bar_plot = new BarPlot(config, data, arrayData);
         bar_plot.update();
     })
     .catch(error => {
@@ -23,14 +23,15 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
     });
 
 class BarPlot {
-    constructor(config, data) {
+    constructor(config, data, arrayData) {
         this.config = {
             parent: config.parent,
             width: config.width || 256,
             height: config.height || 256,
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
-        this.datas = data;
+        this.data = data;
+        this.arrayData=arrayData;
         console.log(typeof(this.arrayData));
         this.init();
     }
@@ -93,10 +94,10 @@ class BarPlot {
         let self = this;
 
         const xmin = 0;
-        const xmax = d3.max(self.datas, d => d.value);
+        const xmax = d3.max(self.arrayData, d => d[1]);
         self.xscale.domain([xmin, xmax]);
 
-        self.yscale.domain(self.datas.map(d => d.label));
+        self.yscale.domain(self.arrayData.map(d => d[0]));
 
         self.render();
     }
@@ -106,12 +107,12 @@ class BarPlot {
 
         // Draw bars
         self.chart.selectAll("rect")
-            .data(self.datas)
+            .data(self.arrayData)
             .enter()
             .append("rect")
             .attr("x", 0)
-            .attr("y", d => self.yscale(d.label))
-            .attr("width", d => self.xscale(d.value))
+            .attr("y", d => self.yscale(d[0]))
+            .attr("width", d => self.xscale(d[1]))
             .attr("height", self.yscale.bandwidth());
 
         self.xaxis_group
@@ -123,22 +124,18 @@ class BarPlot {
 }
 d3.select('#reverse')
     .on('click', d => {
-            // for(var i=0; i<this.datas.length; i++){
-            //     console.log(this.datas[i].label + " , " + this.datas[i].value);
-            // }
-            Object.keys(this.datas).forEach(key => console.log(key));
-        // this.data.reverse();
+        self.arrayData.reverse();
         bar_plot.update();
     });
 
 d3.select('#descend')
     .on('click', d => {
-        this.datas.reverse();
+        self.arrayData.reverse();
         bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
-        this.datas.reverse();
+        self.arrayData.reverse();
         bar_plot.update();
     });
