@@ -2,15 +2,18 @@ var arrayData = [];
 var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok4");
+        console.log("ok5");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
             initial_data.push([d.label, d.value]);
+            for(var i;i<arrayData.length;i++){
+                initial_data[i]=arrayData[i].slice;
+            }
         });
         console.log("ok11");
-        console.log(arrayData);
+        console.log(initial_data);
         var config = {
             parent: '#drawing_region',
             width: 500,
