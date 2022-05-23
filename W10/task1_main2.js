@@ -123,20 +123,22 @@ class BarPlot {
 
         d3.select('#reverse')
             .on('click', d => {
-                console.log(self.arrayData);
                 self.arrayData.reverse();
+                console.log(self.arrayData);
                 self.update();
             });
 
         d3.select('#descend')
             .on('click', d => {
                 self.arrayData.sort((a, b) => b[1] - a[1]);
+                console.log(self.arrayData);
                 self.update();
             });
 
         d3.select('#ascend')
             .on('click', d => {
                 self.arrayData.sort((a, b) => a[1] - b[1]);
+                console.log(self.arrayData);
                 self.update();
             });
     }
