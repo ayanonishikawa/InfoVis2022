@@ -122,7 +122,7 @@ d3.select('#reverse')
             // for(var i=0; i<this.datas.length; i++){
             //     console.log(this.datas[i].label + " , " + this.datas[i].value);
             // }
-            Object.keys(this.datas).forEach(key => console.log(key);
+            Object.keys(this.datas).forEach(key => console.log(key));
         // this.data.reverse();
         bar_plot.update();
     });
