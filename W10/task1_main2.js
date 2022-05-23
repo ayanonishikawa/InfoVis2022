@@ -31,7 +31,7 @@ class BarPlot {
             margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
         }
         this.datas = data;
-        console.log(typeof(this.datas));
+        console.log(typeof(this.arrayData));
         this.init();
     }
 
