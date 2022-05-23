@@ -34,7 +34,7 @@ class BarPlot {
         this.data = data;
         this.arrayData = arrayData;
         this.initial_data=initial_data;
-        console.log(typeof (this.arrayData));
+        console.log(initial_data);
         this.init();
     }
 
