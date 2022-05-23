@@ -1,82 +1,154 @@
-var data;
-d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W04/vitaminC_ranking.csv")
+var arrayData = [];
+d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
+        console.log("ok19-1");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
-            console.log(d.label + "," + d.value)
+            console.log(d.label + "," + d.value);
+            arrayData.push([d.label, d.value]);
         });
-        this.data=data;
-        console.log("ok10");
+        console.log("ok11");
+        console.log(arrayData);
+        var config = {
+            parent: '#drawing_region',
+            width: 500,
+            height: 300,
+            margin: { top: 50, right: 10, bottom: 70, left: 120 },
+        };
+        var initial_data=arrayData;
+        const bar_plot = new BarPlot(config, data, arrayData,initial_data);
+        bar_plot.update(arrayData);
     })
     .catch(error => {
         console.log(error);
     });
 
-var width = 500;
-var height = 300;
-var margin = { top: 50, right: 10, bottom: 70, left: 120};
-console.log(data.value);
+class BarPlot {
+    constructor(config, data, arrayData,initial_data) {
+        this.config = {
+            parent: config.parent,
+            width: config.width || 256,
+            height: config.height || 256,
+            margin: config.margin || { top: 10, right: 10, bottom: 10, left: 10 }
+        }
+        this.data = data;
+        this.arrayData = arrayData;
+        this.initial_data=initial_data;
+        console.log(typeof (this.arrayData));
+        this.init();
+    }
 
-var svg = d3.select('#drawing_region');
+    init() {
+        let self = this;
+        self.svg = d3.select(self.config.parent)
+            .attr('width', self.config.width)
+            .attr('height', self.config.height);
 
-var chart = svg.append('g')
-    .attr('transform', `translate(${margin.left}, ${margin.top})`);
+        self.chart = self.svg.append('g')
+            .attr('transform', `translate(${self.config.margin.left}, ${self.config.margin.top})`);
+        self.inner_width = self.config.width - self.config.margin.left - self.config.margin.right;
+        self.inner_height = self.config.height - self.config.margin.top - self.config.margin.bottom;
+        console.log(self.inner_width + "," + self.inner_height);
 
-const inner_width = width - margin.left - margin.right;
-const inner_height = height - margin.top - margin.bottom;
+        // Initialize axis scales
+        self.xscale = d3.scaleLinear()
+            .range([0, self.inner_width]);
 
-// Initialize axis scales
-const xscale = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.value)])
-    .range([0, inner_width]);
+        self.yscale = d3.scaleBand()
+            .range([0, self.inner_height])
+            .paddingInner(0.1);
 
-const yscale = d3.scaleBand()
-    .domain(data.map(d => d.label))
-    .range([0, inner_height])
-    .paddingInner(0.1);
+        // Initialize axes
+        self.xaxis = d3.axisBottom(self.xscale)
+            .ticks(10)
+            .tickSizeOuter(0);
 
-// Initialize axes
-const xaxis = d3.axisBottom(xscale)
-    .ticks(5)
-    .tickSizeOuter(0);
+        self.yaxis = d3.axisLeft(self.yscale)
+            .tickSizeOuter(0);
 
-const yaxis = d3.axisLeft(yscale)
-    .tickSizeOuter(0);
+        // Draw the axis
+        self.xaxis_group = self.chart.append('g')
+            .attr('transform', `translate(0, ${self.inner_height})`);
 
-// Draw the axis
-const xaxis_group = chart.append('g')
-    .attr('transform', `translate(0, ${inner_height})`)
-    .call(xaxis);
+        self.yaxis_group = self.chart.append('g');
 
-const yaxis_group = chart.append('g')
-    .call(yaxis);
+        self.chart
+            .append("text")
+            .attr("x", self.config.margin.left)
+            .attr("y", -20)
+            .attr("text-anchor", "middle")
+            .text("Vitamin C content of vegetables")
+            .attr("font-size", "12pt")
+            .attr("font-weight", "bold")
+            .style("textDecoration", "underline");
 
-update(data);
+        self.chart
+            .append("text")
+            .attr("x", self.inner_width / 2)
+            .attr("y", self.inner_height + self.config.margin.bottom / 2)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "8pt")
+            .attr("font-weight", "bold")
+            .text("Vitamine C mg/100g");
+    }
 
-function update(data) {
-    svg.selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("x", 0)
-        .attr("y", d => yscale(d.label))
-        .attr("width", d => xscale(d.value))
-        .attr("height", yscale.bandwidth());
+    update(array) {
+        let self = this;
+
+        console.log(array);
+        const xmin = 0;
+        const xmax = d3.max(array, d => d[1]);
+        self.xscale.domain([xmin, xmax]);
+
+        self.yscale.domain(array.map(d => d[0]));
+
+        self.render(array);
+    }
+
+    render(array) {
+        let self = this;
+
+        // Draw bars
+        self.chart.selectAll("rect")
+            .data(array)
+            .join("rect")
+            .attr("x", 0)
+            .attr("y", d => self.yscale(d[0]))
+            .attr("width", d => self.xscale(d[1]))
+            .attr("height", self.yscale.bandwidth());
+
+        self.xaxis_group
+            .call(self.xaxis);
+
+        self.yaxis_group
+            .call(self.yaxis);
+
+        d3.select('#reverse')
+            .on('click', d => {
+                array.reverse();
+                console.log(array);
+                self.update(array);
+            });
+
+        d3.select('#descend')
+            .on('click', d => {
+                array.sort((a, b) => b[1] - a[1]);
+                console.log(array);
+                self.update(array);
+            });
+
+        d3.select('#ascend')
+            .on('click', d => {
+                array.sort((a, b) => a[1] - b[1]);
+                console.log(array);
+                self.update(array);
+            });
+        
+        d3.select('#initialize')
+            .on('click', d => {
+                array=self.initial_data;
+                console.log(array);
+                self.update(array);
+            });
+    }
 }
-
-d3.select('#reverse')
-    .on('click', d => {
-        data.reverse();
-        update(data);
-    });
-
-d3.select('#descend')
-    .on('click', d => {
-        data.reverse();
-        update(data);
-    });
-
-d3.select('#ascend')
-    .on('click', d => {
-        data.reverse();
-        update(data);
-    });
