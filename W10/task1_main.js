@@ -2,7 +2,7 @@ var arrayData = [];
 var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok7");
+        console.log("ok8");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
@@ -10,7 +10,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
         });
         console.log("ok11");
         for(var i=0;i<arrayData.length;i++){
-            initial_data[i]=arrayData[i].slice;
+            initial_data[i]=arrayData[i].concat();
         }
         console.log(initial_data);
         var config = {
