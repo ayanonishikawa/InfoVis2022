@@ -122,6 +122,7 @@ class BarPlot {
             .call(self.yaxis);
     }
 }
+
 d3.select('#reverse')
     .on('click', d => {
         self.arrayData.reverse();
@@ -130,12 +131,12 @@ d3.select('#reverse')
 
 d3.select('#descend')
     .on('click', d => {
-        self.arrayData.reverse();
+        self.arrayData.sort((a, b) => b[1] - a[1]);
         bar_plot.update();
     });
 
 d3.select('#ascend')
     .on('click', d => {
-        self.arrayData.reverse();
+        self.arrayData.sort((a, b) => a[1] - b[1]);
         bar_plot.update();
     });
