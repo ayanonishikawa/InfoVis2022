@@ -2,14 +2,14 @@ var arrayData = [];
 var initial_data=[];
 d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.csv")
     .then(data => {
-        console.log("ok6");
+        console.log("ok7");
         data.forEach(d => {
             d.label = d.name; d.value = +d.amount;
             console.log(d.label + "," + d.value);
             arrayData.push([d.label, d.value]);
         });
         console.log("ok11");
-        for(var i;i<arrayData.length;i++){
+        for(var i=0;i<arrayData.length;i++){
             initial_data[i]=arrayData[i].slice;
         }
         console.log(initial_data);
