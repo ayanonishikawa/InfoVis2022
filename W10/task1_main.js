@@ -19,7 +19,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
             height: 300,
             margin: { top: 50, right: 10, bottom: 70, left: 120 },
         };
-        const bar_plot = new BarPlot(config, data, arrayData,initial_data);
+        const bar_plot = new BarPlot(config, data, arrayData);
         bar_plot.update(arrayData);
     })
     .catch(error => {
@@ -27,7 +27,7 @@ d3.csv("https://ayanonishikawa.github.io/InfoVis2022/W10/vitaminC_ranking_w10.cs
     });
 
 class BarPlot {
-    constructor(config, data, arrayData,initial_data) {
+    constructor(config, data, arrayData) {
         this.config = {
             parent: config.parent,
             width: config.width || 256,
@@ -36,8 +36,6 @@ class BarPlot {
         }
         this.data = data;
         this.arrayData = arrayData;
-        this.initial_data=initial_data;
-        console.log(initial_data);
         this.init();
     }
 
